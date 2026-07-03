@@ -878,6 +878,36 @@ fbq("track", "PageView");
     });
   });
 
+  document.querySelectorAll('a[href*="facebook.com"], a[href*="instagram.com"], a[href*="maps.app.goo.gl"]').forEach((link) => {
+    link.addEventListener("click", () => {
+      const href = link.href || "";
+      const label = link.getAttribute("aria-label") || link.getAttribute("title") || link.textContent.trim() || "External Link";
+      let destination = "external";
+      if (href.includes("facebook.com")) destination = "facebook";
+      if (href.includes("instagram.com")) destination = "instagram";
+      if (href.includes("maps.app.goo.gl")) destination = "google_maps";
+      trackPixel("OutboundLinkClick", {
+        content_name: label,
+        content_category: destination,
+        destination_url: href,
+      }, { custom: true });
+      if (destination === "google_maps") {
+        trackPixel("FindLocationClick", {
+          content_name: "Google Maps Click",
+          content_category: "Location",
+          destination_url: href,
+        }, { custom: true });
+      }
+      if (destination === "facebook" || destination === "instagram") {
+        trackPixel("SocialLinkClick", {
+          content_name: label,
+          content_category: destination,
+          destination_url: href,
+        }, { custom: true });
+      }
+    });
+  });
+
   if ("IntersectionObserver" in window) {
     const sectionEvents = [
       { selector: "#contact", name: "Contact Section Viewed", category: "Contact" },
