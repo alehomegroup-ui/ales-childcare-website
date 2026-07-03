@@ -908,6 +908,142 @@ fbq("track", "PageView");
     });
   });
 
+  function trackContactIntent(channel, label, extra = {}) {
+    const parameters = {
+      content_name: label,
+      content_category: "Contact Intent",
+      contact_channel: channel,
+      ...extra,
+    };
+    trackPixel("ContactIntent", parameters, { custom: true });
+    if (currentLanguage === "es") {
+      trackPixel("SpanishContactIntent", parameters, { custom: true });
+    }
+  }
+
+  document.querySelectorAll('a[href="#contact"]').forEach((link) => {
+    link.addEventListener("click", () => {
+      const label = link.textContent.trim() || "Schedule a Tour";
+      trackContactIntent("schedule_tour", label, {
+        cta_text: label,
+        cta_location: link.closest(".hero-ctas") ? "hero" : "site",
+      });
+      if (link.closest(".hero-ctas")) {
+        trackPixel("HeroCTAClick", {
+          content_name: label,
+          content_category: "Hero CTA",
+          cta_text: label,
+        }, { custom: true });
+      }
+    });
+  });
+
+  document.querySelectorAll('a[href^="mailto:"]').forEach((link) => {
+    link.addEventListener("click", () => {
+      const label = link.textContent.trim() || "Email Ale";
+      trackContactIntent("email", label, { link_url: link.href });
+      if (link.closest(".hero-ctas")) {
+        trackPixel("HeroCTAClick", {
+          content_name: label,
+          content_category: "Hero CTA",
+          cta_text: label,
+        }, { custom: true });
+      }
+    });
+  });
+
+  document.querySelectorAll('a[href^="tel:"]').forEach((link) => {
+    link.addEventListener("click", () => {
+      trackContactIntent("phone", link.textContent.trim() || "Phone Click", { link_url: link.href });
+    });
+  });
+
+  document.querySelectorAll('a[href*="maps.app.goo.gl"]').forEach((link) => {
+    link.addEventListener("click", () => {
+      const label = link.getAttribute("aria-label") || link.getAttribute("title") || link.textContent.trim() || "Google Maps";
+      trackContactIntent("google_maps", label, { destination_url: link.href });
+      trackPixel("DirectionsClick", {
+        content_name: label,
+        content_category: "Location",
+        destination_url: link.href,
+      }, { custom: true });
+    });
+  });
+
+  setTimeout(() => {
+    trackPixelOnce("pixel_time_on_site_30", "TimeOnSite", {
+      content_name: "Time on Site 30 Seconds",
+      content_category: "Engagement",
+      seconds: 30,
+    }, { custom: true });
+  }, 30000);
+
+  setTimeout(() => {
+    trackPixelOnce("pixel_time_on_site_60", "TimeOnSite", {
+      content_name: "Time on Site 60 Seconds",
+      content_category: "Engagement",
+      seconds: 60,
+    }, { custom: true });
+  }, 60000);
+
+  const scrollThresholds = [50, 75, 90];
+  function trackScrollDepth() {
+    const doc = document.documentElement;
+    const scrollable = doc.scrollHeight - window.innerHeight;
+    const percent = scrollable <= 0 ? 100 : Math.round(((window.scrollY + window.innerHeight) / doc.scrollHeight) * 100);
+    scrollThresholds.forEach((threshold) => {
+      if (percent >= threshold) {
+        trackPixelOnce("pixel_scroll_depth_" + threshold, "ScrollDepth", {
+          content_name: "Scroll Depth " + threshold + "%",
+          content_category: "Engagement",
+          scroll_depth: threshold,
+        }, { custom: true });
+      }
+    });
+  }
+  window.addEventListener("scroll", trackScrollDepth, { passive: true });
+  trackScrollDepth();
+
+  document.querySelectorAll(".g-item").forEach((item, index) => {
+    item.addEventListener("click", () => {
+      trackPixel("GalleryImageOpen", {
+        content_name: item.getAttribute("data-cap") || "Gallery Image",
+        content_category: "Gallery",
+        gallery_position: index + 1,
+      }, { custom: true });
+    });
+  });
+
+  if ("IntersectionObserver" in window) {
+    const mapFrame = document.querySelector('iframe[src*="google.com/maps"]');
+    if (mapFrame) {
+      const mapObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          trackPixelOnce("pixel_map_embed_viewed", "MapEmbedViewed", {
+            content_name: "Google Map Viewed",
+            content_category: "Location",
+          }, { custom: true });
+        });
+      }, { threshold: 0.45 });
+      mapObserver.observe(mapFrame);
+    }
+
+    const reviewsSection = document.querySelector("#testimonials");
+    if (reviewsSection) {
+      const reviewsObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          trackPixelOnce("pixel_reviews_viewed_specific", "ReviewsViewed", {
+            content_name: "Reviews Viewed",
+            content_category: "Reviews",
+          }, { custom: true });
+        });
+      }, { threshold: 0.55 });
+      reviewsObserver.observe(reviewsSection);
+    }
+  }
+
   if ("IntersectionObserver" in window) {
     const sectionEvents = [
       { selector: "#contact", name: "Contact Section Viewed", category: "Contact" },
