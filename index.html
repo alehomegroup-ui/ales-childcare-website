@@ -59,6 +59,63 @@
   ]
 }
 </script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "@id": "https://aleshomechildcare.com/#faq",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Is Ale's Home Childcare licensed?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Ale's Home Childcare is a licensed childcare program in Fremont, California. The California license number shown on the site is 015701501."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do children learn in English and Spanish?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Children hear and practice both English and Spanish through songs, calendar time, colors, shapes, numbers, letters, emotions, art, and daily routines."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What are the childcare hours?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Ale's Home Childcare is open Monday through Friday from 8:00 AM to 5:30 PM."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Are meals included?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Breakfast, a snack, and lunch are included each day, so families do not need to pack a lunchbox."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Where is the daycare located?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Ale's Home Childcare is an in-home daycare in Fremont, CA, serving local Fremont families and nearby neighborhoods when the location is a good fit."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How can parents schedule a tour or ask about openings?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Parents can call or text (206) 609-1653, email alehomegroup@gmail.com, or use the contact section on the website to ask questions, schedule a visit, or check current openings."
+      }
+    }
+  ]
+}
+</script>
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌈</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -477,6 +534,18 @@
   }
 
   /* ---------- CONTACT ---------- */
+  .faq{background:var(--paper);}
+  .faq-grid{display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:18px;}
+  .faq-item{
+    background:var(--white);
+    border:2px solid rgba(43,38,64,0.10);
+    border-radius:var(--radius-sm);
+    padding:22px;
+    box-shadow:0 8px 18px rgba(43,38,64,0.06);
+  }
+  .faq-item h3{font-size:22px; margin-bottom:8px;}
+  .faq-item p{font-size:15.5px; margin:0;}
+
   .contact{
     background:linear-gradient(135deg, var(--grape) 0%, #6E3FAE 100%);
     color:var(--white);
@@ -542,6 +611,7 @@
     .trust-grid{grid-template-columns:repeat(3,1fr);}
     .gallery-grid{grid-template-columns:repeat(2,1fr); grid-auto-rows:200px;}
     .g-big{grid-column:span 2; grid-row:span 1;}
+    .faq-grid{grid-template-columns:1fr;}
     .contact-grid{grid-template-columns:repeat(2,1fr);}
   }
   @media (max-width:760px){
@@ -797,6 +867,43 @@
     </div>
   </section>
 
+  <!-- FAQ -->
+  <section class="faq" id="faq">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Questions parents ask</span>
+        <h2>Helpful details before you reach out</h2>
+        <p>Quick answers about Ale's licensed bilingual in-home daycare in Fremont, CA.</p>
+      </div>
+      <div class="faq-grid">
+        <article class="faq-item">
+          <h3>Is Ale's Home Childcare licensed?</h3>
+          <p>Yes. Ale's Home Childcare is a licensed childcare program in Fremont, California. The California license number shown on the site is 015701501.</p>
+        </article>
+        <article class="faq-item">
+          <h3>Do children learn in English and Spanish?</h3>
+          <p>Yes. Children hear and practice both English and Spanish through songs, calendar time, colors, shapes, numbers, letters, emotions, art, and daily routines.</p>
+        </article>
+        <article class="faq-item">
+          <h3>What are the childcare hours?</h3>
+          <p>Ale's Home Childcare is open Monday through Friday from 8:00 AM to 5:30 PM.</p>
+        </article>
+        <article class="faq-item">
+          <h3>Are meals included?</h3>
+          <p>Yes. Breakfast, a snack, and lunch are included each day, so families do not need to pack a lunchbox.</p>
+        </article>
+        <article class="faq-item">
+          <h3>Where is the daycare located?</h3>
+          <p>Ale's Home Childcare is an in-home daycare in Fremont, CA, serving local Fremont families and nearby neighborhoods when the location is a good fit.</p>
+        </article>
+        <article class="faq-item">
+          <h3>How can parents schedule a tour or ask about openings?</h3>
+          <p>Parents can call or text (206) 609-1653, email alehomegroup@gmail.com, or use the contact section on the website to ask questions, schedule a visit, or check current openings.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
   <!-- CONTACT -->
   <section style="padding:0 0 90px;">
     <div class="contact" id="contact">
@@ -851,6 +958,7 @@
         <li><a href="#learning">Learning</a></li>
         <li><a href="#schedule">Daily Schedule</a></li>
         <li><a href="#gallery">Gallery</a></li>
+        <li><a href="#faq">FAQ</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
     </div>

@@ -1,0 +1,10 @@
+/
+  Link: </llms.txt>; rel="describedby"; type="text/plain"
+  Link: </about.md>; rel="alternate"; type="text/markdown"
+  Link: </sitemap.xml>; rel="sitemap"; type="application/xml"
+
+/llms.txt
+  Content-Type: text/plain; charset=utf-8
+
+/about.md
+  Content-Type: text/markdown; charset=utf-8
