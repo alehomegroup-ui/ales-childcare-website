@@ -365,40 +365,37 @@
   }
 
   /* ---------- LEARNING / POSTER CARDS ---------- */
-  .learning{background:var(--cream);}
+  .learning{background:var(--cream); padding:64px 0;}
+  .learning .section-head{margin-bottom:26px;}
   .poster-grid{
-    display:grid; grid-template-columns:repeat(3,1fr); gap:28px;
+    display:grid; grid-template-columns:repeat(6,1fr); gap:12px;
   }
   .poster-card{
     position:relative;
-    border-radius:24px;
-    padding:30px 24px 26px;
+    border-radius:18px;
+    padding:18px 14px 16px;
     color:var(--white);
-    border:4px solid var(--white);
-    box-shadow:var(--shadow-card);
-    min-height:190px;
+    border:3px solid var(--white);
+    box-shadow:var(--shadow-soft);
+    min-height:126px;
   }
-  .poster-card .tape{
-    position:absolute; top:-14px; left:50%; transform:translateX(-50%) rotate(-3deg);
-    width:70px; height:26px; background:rgba(255,255,255,0.55);
-    border:1px solid rgba(255,255,255,0.7);
-  }
-  .poster-card .ic{font-size:32px; margin-bottom:10px; display:block;}
+  .poster-card .tape{display:none;}
+  .poster-card .ic{font-size:24px; margin-bottom:6px; display:block;}
   .poster-card h4{
-    color:var(--white); font-size:19px; text-transform:uppercase;
-    letter-spacing:.03em; margin-bottom:6px;
+    color:var(--white); font-size:15.5px; text-transform:uppercase;
+    letter-spacing:.02em; margin-bottom:2px; line-height:1.05;
   }
   .poster-card span.es{
-    display:block; font-weight:600; font-size:13.5px; opacity:.92; margin-bottom:10px;
+    display:block; font-weight:600; font-size:12.5px; opacity:.94; margin-bottom:6px;
     font-family:'Mulish',sans-serif; font-style:italic;
   }
-  .poster-card p{color:rgba(255,255,255,0.94); font-size:14.5px; margin:0;}
-  .pc-1{background:var(--coral); transform:rotate(-1.4deg);}
-  .pc-2{background:var(--teal); transform:rotate(1deg);}
-  .pc-3{background:var(--grape); transform:rotate(-0.8deg);}
-  .pc-4{background:var(--sun-deep); transform:rotate(1.3deg);}
-  .pc-5{background:var(--leaf-deep); transform:rotate(-1deg);}
-  .pc-6{background:#E0577C; transform:rotate(0.8deg);}
+  .poster-card p{color:rgba(255,255,255,0.94); font-size:12.5px; line-height:1.35; margin:0;}
+  .pc-1{background:var(--coral);}
+  .pc-2{background:var(--teal);}
+  .pc-3{background:var(--grape);}
+  .pc-4{background:var(--sun-deep);}
+  .pc-5{background:var(--leaf-deep);}
+  .pc-6{background:#E0577C;}
 
   /* ---------- DAILY RHYTHM ---------- */
   .rhythm{background:var(--paper);}
@@ -612,7 +609,7 @@
     .about .container{grid-template-columns:1fr;}
     .rhythm .container{grid-template-columns:1fr;}
     .rhythm-side{position:static;}
-    .poster-grid{grid-template-columns:repeat(2,1fr);}
+    .poster-grid{grid-template-columns:repeat(3,1fr);}
     .trust-grid{grid-template-columns:repeat(3,1fr);}
     .gallery-grid{grid-template-columns:repeat(2,1fr); grid-auto-rows:200px;}
     .g-big{grid-column:span 2; grid-row:span 1;}
@@ -641,7 +638,8 @@
     .about-photo .sticker{right:8px; bottom:-18px; width:94px; height:94px; font-size:13.5px;}
     .hero-ctas .btn{width:100%; white-space:normal;}
     section{padding:60px 0;}
-    .poster-grid{grid-template-columns:1fr;}
+    .poster-grid{grid-template-columns:repeat(2,1fr); gap:10px;}
+    .poster-card{padding:15px 12px 14px; min-height:116px;}
     .contact-grid{grid-template-columns:1fr;}
     .contact{border-radius:28px; margin:0 14px;}
     .container{padding:0 18px;}
@@ -816,15 +814,15 @@
       <div class="section-head">
         <span class="eyebrow">📚 Curriculum</span>
         <h2>What your little one will learn</h2>
-        <p>Borrowed straight from the walls of Ale's classroom. Every theme is taught and reinforced in both English and Spanish.</p>
+        <p>Every theme is taught and reinforced in both English and Spanish.</p>
       </div>
       <div class="poster-grid">
-        <div class="poster-card pc-1"><div class="tape"></div><span class="ic">🎨</span><h4>Colors</h4><span class="es">Los Colores</span><p>Naming, mixing, and painting with every color of the rainbow.</p></div>
-        <div class="poster-card pc-2"><div class="tape"></div><span class="ic">🔺</span><h4>Shapes</h4><span class="es">Las Formas</span><p>Circles, squares, triangles, spotted in toys, art, and snacks.</p></div>
-        <div class="poster-card pc-3"><div class="tape"></div><span class="ic">🔢</span><h4>Numbers</h4><span class="es">Los Números</span><p>Counting together through songs, games, and daily routines.</p></div>
-        <div class="poster-card pc-4"><div class="tape"></div><span class="ic">📅</span><h4>Days &amp; Calendar</h4><span class="es">Los Días</span><p>Learning the days of the week and what makes today special.</p></div>
-        <div class="poster-card pc-5"><div class="tape"></div><span class="ic">😊</span><h4>Emotions</h4><span class="es">Las Emociones</span><p>Putting feelings into words, in two languages, every day.</p></div>
-        <div class="poster-card pc-6"><div class="tape"></div><span class="ic">🔤</span><h4>Alphabet</h4><span class="es">El Abecedario</span><p>Letters, sounds, and early literacy in English and Spanish.</p></div>
+        <div class="poster-card pc-1"><span class="ic">🎨</span><h4>Colors</h4><span class="es">Los Colores</span><p>Painting, naming, and matching.</p></div>
+        <div class="poster-card pc-2"><span class="ic">🔺</span><h4>Shapes</h4><span class="es">Las Formas</span><p>Finding shapes in play.</p></div>
+        <div class="poster-card pc-3"><span class="ic">🔢</span><h4>Numbers</h4><span class="es">Los Números</span><p>Counting songs and games.</p></div>
+        <div class="poster-card pc-4"><span class="ic">📅</span><h4>Calendar</h4><span class="es">Los Días</span><p>Days, weather, and routines.</p></div>
+        <div class="poster-card pc-5"><span class="ic">😊</span><h4>Emotions</h4><span class="es">Las Emociones</span><p>Words for big feelings.</p></div>
+        <div class="poster-card pc-6"><span class="ic">🔤</span><h4>Alphabet</h4><span class="es">El Abecedario</span><p>Letters, sounds, and books.</p></div>
       </div>
     </div>
   </section>
