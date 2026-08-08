@@ -294,6 +294,15 @@
   }
   .hero p.lead{font-size:17px; max-width:480px;}
   .hero-ctas{display:flex; gap:16px; flex-wrap:wrap; margin-top:8px;}
+  .hero-availability{
+    margin:14px 0 0;
+    max-width:500px;
+    font-family:'Baloo 2',sans-serif;
+    font-size:14.5px;
+    font-weight:700;
+    color:var(--ink);
+  }
+  .hero-availability span{color:var(--coral-deep);}
   .hero-art{position:relative; overflow:visible;}
   .hero-photo-card{
     position:relative; border-radius:32px; overflow:hidden;
@@ -359,10 +368,32 @@
     font-size:clamp(24px,3vw,32px); color:var(--grape-deep); margin-bottom:.5em;
   }
   .about-copy p{font-size:15.8px;}
-  .about-values{display:flex; flex-wrap:wrap; gap:10px; margin-top:16px;}
-  .value-chip{
-    font-family:'Baloo 2',sans-serif; font-weight:700; font-size:13.5px;
-    padding:8px 14px; border-radius:999px; color:var(--white);
+  .why-mini{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:10px;
+    margin-top:18px;
+  }
+  .why-mini div{
+    background:var(--white);
+    border:2px solid var(--cream-2);
+    border-radius:16px;
+    padding:12px;
+    box-shadow:var(--shadow-soft);
+  }
+  .why-mini strong{
+    display:block;
+    font-family:'Baloo 2',sans-serif;
+    font-size:14px;
+    line-height:1.1;
+    color:var(--ink);
+  }
+  .why-mini span{
+    display:block;
+    margin-top:4px;
+    font-size:12px;
+    line-height:1.25;
+    color:var(--ink-soft);
   }
 
   /* ---------- LEARNING / POSTER CARDS ---------- */
@@ -622,6 +653,19 @@
   .c-card strong{display:block; font-family:'Baloo 2',sans-serif; font-size:14px; margin-bottom:1px; line-height:1.05;}
   .c-card span{display:block; font-size:12px; line-height:1.2; color:rgba(255,255,255,0.85); overflow-wrap:anywhere;}
   .contact-bottom{display:flex; align-items:center; justify-content:center; gap:18px; flex-wrap:wrap;}
+  .rates-note{
+    max-width:520px;
+    margin:0 auto 20px;
+    padding:10px 14px;
+    border-radius:999px;
+    background:rgba(255,255,255,0.14);
+    border:2px solid rgba(255,255,255,0.24);
+    color:rgba(255,255,255,0.9);
+    text-align:center;
+    font-family:'Baloo 2',sans-serif;
+    font-weight:700;
+    font-size:14px;
+  }
   .social-row{display:flex; gap:12px;}
   .social-btn{
     width:46px; height:46px; border-radius:50%; background:rgba(255,255,255,0.14);
@@ -629,6 +673,28 @@
     text-decoration:none; color:var(--white); font-size:18px;
   }
   .mobile-contact-bar{display:none;}
+  .map-details{margin-top:24px;}
+  .map-details summary{
+    cursor:pointer;
+    width:max-content;
+    margin:0 auto;
+    list-style:none;
+    padding:10px 18px;
+    border-radius:999px;
+    background:rgba(255,255,255,0.14);
+    border:2px solid rgba(255,255,255,0.26);
+    color:var(--white);
+    font-family:'Baloo 2',sans-serif;
+    font-weight:800;
+  }
+  .map-details summary::-webkit-details-marker{display:none;}
+  .map-wrap{
+    margin-top:14px;
+    border-radius:18px;
+    overflow:hidden;
+    border:3px solid rgba(255,255,255,0.2);
+    box-shadow:0 12px 30px rgba(0,0,0,0.18);
+  }
 
   /* ---------- FOOTER ---------- */
   footer{background:var(--cream-2); padding:36px 0 22px; margin-top:54px;}
@@ -679,6 +745,9 @@
     .about-photo img{height:310px;}
     .about-photo .sticker{right:8px; bottom:-18px; width:94px; height:94px; font-size:13.5px;}
     .hero-ctas .btn{width:100%; white-space:normal;}
+    .hero-ctas .btn-ghost{display:none;}
+    .hero-availability{font-size:13.5px;}
+    .why-mini{grid-template-columns:1fr;}
     section{padding:52px 0;}
     .poster-grid{grid-template-columns:repeat(2,1fr); gap:10px;}
     .timeline{grid-template-columns:1fr;}
@@ -692,6 +761,7 @@
     .contact{padding:42px 18px;}
     .contact-grid{grid-template-columns:1fr;}
     .c-card{padding:11px 12px;}
+    .rates-note{border-radius:16px;}
     .contact{border-radius:28px; margin:0 14px;}
     .container{padding:0 18px;}
     body{padding-bottom:68px;}
@@ -764,6 +834,7 @@
           <a href="tel:+12066091653" class="btn btn-primary">📞 Call or Text Ale</a>
           <a href="#gallery" class="btn btn-ghost">📸 View Photos</a>
         </div>
+        <p class="hero-availability"><span>Now speaking with families</span> for current and upcoming openings. Rates and availability are shared during your tour.</p>
       </div>
       <div class="hero-art">
         <div class="hero-photo-card">
@@ -782,7 +853,7 @@
         <div class="trust-pill"><span class="ic">🌎</span><div><strong>Bilingual EN/ES</strong><small>English & Spanish daily</small></div></div>
         <div class="trust-pill"><span class="ic">🍽️</span><div><strong>Meals included</strong><small>Breakfast, snack & lunch</small></div></div>
         <div class="trust-pill"><span class="ic">🕗</span><div><strong>8:00 AM – 5:30 PM</strong><small>Monday – Friday</small></div></div>
-        <div class="trust-pill"><span class="ic">📍</span><div><strong>Fremont, CA</strong><small>In-home setting</small></div></div>
+        <div class="trust-pill"><span class="ic">👶</span><div><strong>Ages served</strong><small>Infants, toddlers &amp; preschoolers</small></div></div>
         <div class="trust-pill"><span class="ic">✅</span><div><strong>Licensed Childcare</strong><small>State of California</small></div></div>
       </div>
     </div>
@@ -800,11 +871,10 @@
         <h3 class="greeting">Meet Ale, a caregiver with a nurse's heart</h3>
         <p>Hello, my name is Ale. I am originally from Mexico, with a background in nursing, early childhood education, and years of experience as a nanny, babysitter, and teacher.</p>
         <p>I know leaving your child in someone else's care is a big decision. My goal is to create a second home where children feel loved, respected, encouraged, and supported every day.</p>
-        <div class="about-values">
-          <span class="value-chip" style="background:var(--coral);">Nursing background</span>
-          <span class="value-chip" style="background:var(--teal);">Bilingual care</span>
-          <span class="value-chip" style="background:var(--grape);">Small-group attention</span>
-          <span class="value-chip" style="background:var(--sun-deep);">Steady routines</span>
+        <div class="why-mini" aria-label="What makes Ale different">
+          <div><strong>🩺 Nurse's heart</strong><span>Calm, attentive care shaped by nursing experience.</span></div>
+          <div><strong>🌎 Bilingual every day</strong><span>English and Spanish woven into routines and play.</span></div>
+          <div><strong>🏡 Small home setting</strong><span>A cozy group where children can feel known.</span></div>
         </div>
       </div>
     </div>
@@ -816,7 +886,7 @@
       <div class="section-head">
         <span class="eyebrow">💌 From our families</span>
         <h2>Parents felt safe with Ale</h2>
-        <p>Real notes from families who trusted Ale with their little ones.</p>
+        <p>Handwritten parent notes from families Ale has cared for.</p>
       </div>
       <div class="testi-grid">
         <div class="testi-card">
@@ -940,7 +1010,7 @@
         </div>
       </div>
       <details class="gallery-more">
-        <summary>View more photos</summary>
+        <summary>Peek inside more of the daycare</summary>
         <div class="gallery-grid gallery-extra-grid">
           <div class="g-item" data-cap="Hands-on color sorting activity">
             <img src="assets/photos/color-sorting-activity.jpg" alt="Child matching colors with a wooden activity board with face covered for privacy" loading="lazy" class="focus-color-sort">
@@ -998,7 +1068,7 @@
         <div class="section-head">
           <span class="eyebrow">💌 Get in touch</span>
           <h2>Let's talk about your little one</h2>
-          <p>Call, text, or email Ale to ask questions or check current openings.</p>
+          <p>Call, text, or email Ale to ask questions, check openings, and talk through rates during a visit.</p>
         </div>
         <div class="contact-grid">
           <a href="tel:+12066091653" class="c-card"><span class="ic">📞</span><div><strong>Call or text</strong><span>(206) 609-1653</span></div></a>
@@ -1007,6 +1077,7 @@
           <div class="c-card"><span class="ic">🕗</span><div><strong>Hours</strong><span>Mon-Fri, 8:00-5:30</span></div></div>
           <div class="c-card"><span class="ic">✅</span><div><strong>Licensed Childcare</strong><span>CA License # 015701501</span></div></div>
         </div>
+        <div class="rates-note">Rates and availability are shared during your tour.</div>
         <div class="contact-bottom">
           <div class="social-row">
             <a href="https://www.facebook.com/people/Ale-Home-Daycare/61591637097588/" target="_blank" rel="noopener" class="social-btn" title="Facebook" aria-label="Facebook" style="background:#1877F2;">
@@ -1021,10 +1092,12 @@
           </div>
         </div>
 
-        <!-- Google Map -->
-        <div style="margin-top:40px; border-radius:20px; overflow:hidden; border:4px solid rgba(255,255,255,0.2); box-shadow:0 12px 30px rgba(0,0,0,0.2);">
-          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3164.1606222223404!2d-121.95538909999998!3d37.5277108!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x808fc7dd3994ed39%3A0x66a695b78705e27!2sAle%E2%80%99s%20home%20daycare!5e0!3m2!1sen!2sus!4v1782965693488!5m2!1sen!2sus" width="100%" height="320" style="border:0; display:block;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
-        </div>
+        <details class="map-details">
+          <summary>View map</summary>
+          <div class="map-wrap">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3164.1606222223404!2d-121.95538909999998!3d37.5277108!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x808fc7dd3994ed39%3A0x66a695b78705e27!2sAle%E2%80%99s%20home%20daycare!5e0!3m2!1sen!2sus!4v1782965693488!5m2!1sen!2sus" width="100%" height="240" style="border:0; display:block;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+          </div>
+        </details>
       </div>
     </div>
   </section>
