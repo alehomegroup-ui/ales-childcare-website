@@ -506,7 +506,12 @@
     position:relative; border-radius:20px; overflow:hidden; cursor:pointer;
     border:4px solid var(--white); box-shadow:var(--shadow-soft);
   }
-  .g-item img{width:100%; height:100%; object-fit:cover; transition:transform .4s ease;}
+  .g-item img{width:100%; height:100%; object-fit:cover; object-position:center center; transition:transform .4s ease;}
+  .g-item img.focus-first-day{object-position:center 24%;}
+  .g-item img.focus-welcome{object-position:38% 28%;}
+  .g-item img.focus-infant-corner{object-position:54% 78%;}
+  .g-item img.focus-art{object-position:center 26%;}
+  .g-item img.focus-outdoor{object-position:center 64%;}
   .g-item:hover img{transform:scale(1.07);}
   .g-item .cap{
     position:absolute; left:0; right:0; bottom:0; padding:10px 14px 9px;
@@ -876,19 +881,19 @@
           <div class="cap">Nap room</div>
         </div>
         <div class="g-item" data-cap="Outdoor play yard with bikes, slide, and ride-on toys">
-          <img src="assets/photos/outdoor-play-yard.jpg" alt="Outdoor play yard with toddler bikes, a small slide, ride-on toys, and soft turf" loading="lazy">
+          <img src="assets/photos/outdoor-play-yard.jpg" alt="Outdoor play yard with toddler bikes, a small slide, ride-on toys, and soft turf" loading="lazy" class="focus-outdoor">
           <div class="cap">Outdoor play</div>
         </div>
         <div class="g-item" data-cap="Creative art projects">
-          <img src="assets/photos/art-project.jpg" alt="Child holding a colorful handmade cupcake art project with face covered for privacy" loading="lazy">
+          <img src="assets/photos/art-project.jpg" alt="Child holding a colorful handmade cupcake art project with face covered for privacy" loading="lazy" class="focus-art">
           <div class="cap">Art projects</div>
         </div>
         <div class="g-item" data-cap="A warm first day welcome">
-          <img src="assets/photos/first-day-smiles.jpg" alt="Ale smiling with a child holding first day of school signs with the child face covered for privacy" loading="lazy">
+          <img src="assets/photos/first-day-smiles.jpg" alt="Ale smiling with a child holding first day of school signs with the child face covered for privacy" loading="lazy" class="focus-first-day">
           <div class="cap">First day smiles</div>
         </div>
         <div class="g-item" data-cap="A warm welcome with Ale">
-          <img src="assets/photos/welcome-moment.jpg" alt="Ale smiling while holding a child with the child's face covered for privacy" loading="lazy">
+          <img src="assets/photos/welcome-moment.jpg" alt="Ale smiling while holding a child with the child's face covered for privacy" loading="lazy" class="focus-welcome">
           <div class="cap">Warm welcome</div>
         </div>
         <div class="g-item" data-cap="Clean care station">
@@ -904,7 +909,7 @@
           <div class="cap">Infant play</div>
         </div>
         <div class="g-item" data-cap="Infant play corner">
-          <img src="assets/photos/infant-corner.jpg" alt="Infant play corner with swings, sensory bins, ride-on toys, and wall decals" loading="lazy">
+          <img src="assets/photos/infant-corner.jpg" alt="Infant play corner with swings, sensory bins, ride-on toys, and wall decals" loading="lazy" class="focus-infant-corner">
           <div class="cap">Infant corner</div>
         </div>
       </div>
