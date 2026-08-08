@@ -11,6 +11,10 @@ Hours: Monday-Friday, 8:00 AM-5:30 PM
 Languages: English and Spanish
 Meals: Breakfast, snack, and lunch included
 
+## About Ale
+
+Ale is originally from Mexico and is the founder of Ale's Home Childcare. Her background includes nursing, early childhood education, and years of experience as a nanny, babysitter, and teacher. As a parent and bilingual English/Spanish provider, Ale focuses on creating a safe, loving second home where children feel valued, respected, and supported.
+
 ## Summary
 
 Ale's Home Childcare is a warm small-group home childcare program where children learn, play, and grow in both English and Spanish. The program includes home-cooked meals, a consistent daily routine, hands-on art, music, outdoor play, early literacy, numbers, colors, shapes, calendar learning, and emotional vocabulary.
