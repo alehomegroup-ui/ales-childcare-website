@@ -576,17 +576,18 @@
   .contact .section-head p{color:rgba(255,255,255,0.86);}
   .contact .eyebrow{background:rgba(255,255,255,0.16); color:var(--white);}
   .contact-grid{
-    display:grid; grid-template-columns:repeat(4,1fr); gap:14px; margin-bottom:30px;
+    display:grid; grid-template-columns:repeat(5,minmax(0,1fr)); gap:10px; margin-bottom:24px;
   }
   .c-card{
     background:rgba(255,255,255,0.12); border:2px solid rgba(255,255,255,0.22);
-    border-radius:18px; padding:18px 16px; text-align:center; text-decoration:none; color:var(--white);
+    border-radius:16px; padding:12px 12px; text-align:left; text-decoration:none; color:var(--white);
     transition:transform .2s ease, background .2s ease;
+    display:grid; grid-template-columns:24px 1fr; gap:8px; align-items:center; min-width:0;
   }
-  .c-card:hover{transform:translateY(-4px); background:rgba(255,255,255,0.2);}
-  .c-card .ic{font-size:28px; display:block; margin-bottom:10px;}
-  .c-card strong{display:block; font-family:'Baloo 2',sans-serif; font-size:15.5px; margin-bottom:3px;}
-  .c-card span{display:block; font-size:13px; color:rgba(255,255,255,0.85);}
+  .c-card:hover{transform:translateY(-2px); background:rgba(255,255,255,0.2);}
+  .c-card .ic{font-size:20px; display:block;}
+  .c-card strong{display:block; font-family:'Baloo 2',sans-serif; font-size:14px; margin-bottom:1px; line-height:1.05;}
+  .c-card span{display:block; font-size:12px; line-height:1.2; color:rgba(255,255,255,0.85); overflow-wrap:anywhere;}
   .contact-bottom{display:flex; align-items:center; justify-content:center; gap:18px; flex-wrap:wrap;}
   .social-row{display:flex; gap:12px;}
   .social-btn{
@@ -618,7 +619,7 @@
     .gallery-grid{grid-template-columns:repeat(3,1fr); grid-auto-rows:150px;}
     .g-big{grid-column:span 2; grid-row:span 1;}
     .faq-grid{grid-template-columns:1fr;}
-    .contact-grid{grid-template-columns:repeat(2,1fr);}
+    .contact-grid{grid-template-columns:repeat(3,1fr);}
   }
   @media (max-width:760px){
     .nav-links, .nav-phone-wrap{display:none;}
@@ -651,6 +652,7 @@
     .testi-card{padding:16px 14px;}
     .contact{padding:42px 18px;}
     .contact-grid{grid-template-columns:1fr;}
+    .c-card{padding:11px 12px;}
     .contact{border-radius:28px; margin:0 14px;}
     .container{padding:0 18px;}
   }
@@ -972,11 +974,11 @@
           <p>Reach out by phone or email to ask questions, schedule a visit, or check current openings for bilingual in-home childcare in Fremont.</p>
         </div>
         <div class="contact-grid">
-          <a href="tel:+12066091653" class="c-card"><span class="ic">📞</span><strong>Call or text</strong><span>(206) 609-1653</span></a>
-          <a href="mailto:alehomegroup@gmail.com" class="c-card"><span class="ic">✉️</span><strong>Email</strong><span>alehomegroup@gmail.com</span></a>
-          <a href="https://maps.app.goo.gl/2Vq2AAqPZk8vuXNBA" target="_blank" rel="noopener" class="c-card"><span class="ic">📍</span><strong>Location</strong><span>Fremont, CA</span></a>
-          <div class="c-card"><span class="ic">🕗</span><strong>Hours</strong><span>Mon–Fri, 8:00–5:30</span></div>
-          <div class="c-card" style="grid-column:1/-1; text-align:center;"><span class="ic">✅</span><strong>Licensed Childcare</strong><span>California License # 015701501</span></div>
+          <a href="tel:+12066091653" class="c-card"><span class="ic">📞</span><div><strong>Call or text</strong><span>(206) 609-1653</span></div></a>
+          <a href="mailto:alehomegroup@gmail.com" class="c-card"><span class="ic">✉️</span><div><strong>Email</strong><span>alehomegroup@gmail.com</span></div></a>
+          <a href="https://maps.app.goo.gl/2Vq2AAqPZk8vuXNBA" target="_blank" rel="noopener" class="c-card"><span class="ic">📍</span><div><strong>Location</strong><span>Fremont, CA</span></div></a>
+          <div class="c-card"><span class="ic">🕗</span><div><strong>Hours</strong><span>Mon-Fri, 8:00-5:30</span></div></div>
+          <div class="c-card"><span class="ic">✅</span><div><strong>Licensed Childcare</strong><span>CA License # 015701501</span></div></div>
         </div>
         <div class="contact-bottom">
           <div class="social-row">
