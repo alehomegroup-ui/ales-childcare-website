@@ -531,6 +531,8 @@
     position:relative; border-radius:16px; overflow:hidden; cursor:pointer;
     border:3px solid var(--white); box-shadow:var(--shadow-soft);
     transition:transform .24s ease, box-shadow .24s ease;
+    touch-action:manipulation;
+    -webkit-tap-highlight-color:transparent;
   }
   .g-item img{width:100%; height:100%; object-fit:cover; object-position:center center; transition:transform .4s ease;}
   .g-item img.focus-first-day{object-position:center 24%;}
@@ -1235,10 +1237,24 @@
     lightboxImg.alt = img.alt;
     lightboxCap.textContent = item.getAttribute('data-cap') || '';
   }
+  function openGalleryItem(index) {
+    showGalleryItem(index);
+    lightbox.classList.add('open');
+  }
   galleryItems.forEach((item, index) => {
-    item.addEventListener('click', () => {
-      showGalleryItem(index);
-      lightbox.classList.add('open');
+    item.setAttribute('role', 'button');
+    item.setAttribute('tabindex', '0');
+    item.setAttribute('aria-label', `Open photo: ${item.getAttribute('data-cap') || 'daycare photo'}`);
+    item.addEventListener('click', () => openGalleryItem(index));
+    item.addEventListener('pointerup', (e) => {
+      if (e.pointerType !== 'touch') return;
+      e.preventDefault();
+      openGalleryItem(index);
+    });
+    item.addEventListener('keydown', (e) => {
+      if (e.key !== 'Enter' && e.key !== ' ') return;
+      e.preventDefault();
+      openGalleryItem(index);
     });
   });
   function closeLightbox(){ lightbox.classList.remove('open'); lightboxImg.src=''; }
