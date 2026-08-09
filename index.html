@@ -510,7 +510,7 @@
     .testi-note{width:80px;}
   }
   .more-notes, .gallery-more{margin-top:18px;}
-  .more-notes{
+  .more-notes, .gallery-more{
     display:flex;
     flex-direction:column;
     align-items:flex-start;
@@ -521,15 +521,15 @@
     color:var(--grape-deep); background:var(--white); border:2px solid var(--cream-2);
     border-radius:999px; padding:10px 18px; box-shadow:var(--shadow-soft);
   }
-  .more-notes[open] summary{
+  .more-notes[open] summary, .gallery-more[open] summary{
     order:2;
     margin-top:16px;
   }
-  .more-notes .summary-open{display:none;}
-  .more-notes[open] .summary-closed{display:none;}
-  .more-notes[open] .summary-open{display:inline;}
+  .more-notes .summary-open, .gallery-more .summary-open{display:none;}
+  .more-notes[open] .summary-closed, .gallery-more[open] .summary-closed{display:none;}
+  .more-notes[open] .summary-open, .gallery-more[open] .summary-open{display:inline;}
   .more-notes .testi-grid, .gallery-extra-grid{margin-top:16px;}
-  .more-notes[open] .testi-grid{
+  .more-notes[open] .testi-grid, .gallery-more[open] .gallery-extra-grid{
     order:1;
   }
   .gallery{background:var(--cream);}
@@ -1082,7 +1082,7 @@
         </div>
       </div>
       <details class="gallery-more">
-        <summary>Peek inside more of the daycare</summary>
+        <summary><span class="summary-closed">See more photos</span><span class="summary-open">Show fewer photos</span></summary>
         <div class="gallery-grid gallery-extra-grid">
           <div class="g-item" data-cap="Fine-motor learning play">
             <img src="assets/photos/color-sorting-activity.jpg" alt="Child using a wooden learning activity board with face covered for privacy" loading="lazy" class="focus-color-sort">
