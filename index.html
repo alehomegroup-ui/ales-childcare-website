@@ -3,19 +3,19 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ale's Home Childcare: Bilingual In-Home Daycare in Fremont, CA</title>
-<meta name="description" content="Licensed bilingual in-home childcare in Fremont, CA. Ale's Home Childcare offers English/Spanish learning, home-cooked meals, and a warm small-group routine Monday-Friday.">
+<title>Ale's Home Childcare: Bilingual Daycare with a Nurse's Heart</title>
+<meta name="description" content="Licensed bilingual in-home childcare in Fremont, CA with Ale's nursing background, English/Spanish learning, meals included, and a warm small-group routine.">
 <link rel="canonical" href="https://aleshomechildcare.com/">
 <meta name="robots" content="index, follow">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://aleshomechildcare.com/">
-<meta property="og:title" content="Ale's Home Childcare: Bilingual In-Home Daycare in Fremont, CA">
-<meta property="og:description" content="Licensed bilingual in-home childcare in Fremont, CA. Ale's Home Childcare offers English/Spanish learning, home-cooked meals, and a warm small-group routine Monday-Friday.">
+<meta property="og:title" content="Ale's Home Childcare: Bilingual Daycare with a Nurse's Heart">
+<meta property="og:description" content="Licensed bilingual in-home childcare in Fremont, CA with Ale's nursing background, English/Spanish learning, meals included, and a warm small-group routine.">
 <meta property="og:site_name" content="Ale's Home Childcare">
 <meta property="og:locale" content="en_US">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Ale's Home Childcare: Bilingual In-Home Daycare in Fremont, CA">
-<meta name="twitter:description" content="Licensed bilingual in-home childcare in Fremont, CA. Ale's Home Childcare offers English/Spanish learning, home-cooked meals, and a warm small-group routine Monday-Friday.">
+<meta name="twitter:title" content="Ale's Home Childcare: Bilingual Daycare with a Nurse's Heart">
+<meta name="twitter:description" content="Licensed bilingual in-home childcare in Fremont, CA with Ale's nursing background, English/Spanish learning, meals included, and a warm small-group routine.">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -26,7 +26,7 @@
   "url": "https://aleshomechildcare.com/",
   "email": "alehomegroup@gmail.com",
   "telephone": "+1-206-609-1653",
-  "description": "Licensed bilingual in-home childcare in Fremont, CA. Ale's Home Childcare offers English/Spanish learning, home-cooked meals, and a warm small-group routine Monday-Friday.",
+  "description": "Licensed bilingual in-home childcare in Fremont, CA with Ale's nursing background, English/Spanish learning, meals included, and a warm small-group routine.",
   "address": {
     "@type": "PostalAddress",
     "addressLocality": "Fremont",
@@ -165,6 +165,27 @@
     color:var(--ink);
   }
   p{line-height:1.55; margin:0 0 .85em; color:var(--ink-soft);}
+  @keyframes fadeUp{
+    from{opacity:0; transform:translateY(18px);}
+    to{opacity:1; transform:translateY(0);}
+  }
+  @keyframes photoSettle{
+    from{opacity:0; transform:translateY(16px) rotate(-1deg) scale(.98);}
+    to{opacity:1; transform:translateY(0) rotate(2.2deg) scale(1);}
+  }
+  @keyframes tagFloat{
+    0%,100%{translate:0 0;}
+    50%{translate:0 -6px;}
+  }
+  .reveal{
+    opacity:0;
+    transform:translateY(18px);
+    transition:opacity .55s ease, transform .55s ease;
+  }
+  .reveal.in-view{
+    opacity:1;
+    transform:translateY(0);
+  }
   .container{max-width:var(--container); margin:0 auto; padding:0 28px;}
   section{position:relative; padding:68px 0;}
   .eyebrow{
@@ -288,6 +309,12 @@
   }
   .hero h1{font-size:clamp(32px,4.2vw,50px); margin-bottom:.25em;}
   .hero h1 .accent{color:var(--coral-deep);}
+  .hero-copy .eyebrow{animation:fadeUp .55s ease both;}
+  .hero-copy h1{animation:fadeUp .6s ease .08s both;}
+  .hero-copy .sub-es{animation:fadeUp .6s ease .16s both;}
+  .hero-copy .lead{animation:fadeUp .6s ease .24s both;}
+  .hero-copy .hero-ctas{animation:fadeUp .6s ease .32s both;}
+  .hero-copy .hero-availability{animation:fadeUp .6s ease .4s both;}
   .hero .sub-es{
     font-family:'Baloo 2',sans-serif; font-weight:600; font-size:18px;
     color:var(--grape-deep); margin-bottom:12px; display:block;
@@ -309,6 +336,7 @@
     transform:rotate(2.2deg);
     box-shadow:var(--shadow-card);
     border:7px solid var(--white);
+    animation:photoSettle .7s ease .18s both;
   }
   .hero-photo-card img{width:100%; height:360px; object-fit:cover; object-position:center center; display:block;}
   .hero-photo-card img.hero-first-day{object-position:center 28%;}
@@ -321,9 +349,11 @@
   }
   .tag-circle-time{
     bottom:-22px; left:-26px; background:var(--teal); transform:rotate(-6deg);
+    animation:tagFloat 4.8s ease-in-out 1s infinite;
   }
   .tag-bilingual{
     top:-20px; right:-18px; background:var(--grape); transform:rotate(5deg);
+    animation:tagFloat 5.4s ease-in-out 1.25s infinite;
   }
   @media(max-width:760px){
     .tag-circle-time{left:10px; bottom:-16px;}
@@ -340,7 +370,9 @@
     display:flex; align-items:center; gap:13px;
     box-shadow:var(--shadow-soft);
     border:2px solid var(--cream-2);
+    transition:transform .2s ease, box-shadow .2s ease;
   }
+  .trust-pill:hover{transform:translateY(-3px); box-shadow:0 14px 28px rgba(43,38,64,0.12);}
   .trust-pill .ic{font-size:22px; flex-shrink:0;}
   .trust-pill strong{display:block; font-family:'Baloo 2',sans-serif; font-size:14px; color:var(--ink);}
   .trust-pill small{display:block; font-size:12px; color:var(--ink-soft); margin-top:1px;}
@@ -557,6 +589,7 @@
   .g-item{
     position:relative; border-radius:16px; overflow:hidden; cursor:pointer;
     border:3px solid var(--white); box-shadow:var(--shadow-soft);
+    transition:transform .24s ease, box-shadow .24s ease;
   }
   .g-item img{width:100%; height:100%; object-fit:cover; object-position:center center; transition:transform .4s ease;}
   .g-item img.focus-first-day{object-position:center 24%;}
@@ -568,6 +601,7 @@
   .g-item img.focus-shape-tracing{object-position:center 28%;}
   .g-item img.focus-infant-crawl{object-position:center 38%;}
   .g-item img.focus-group-play{object-position:center 42%;}
+  .g-item:hover{transform:translateY(-4px); box-shadow:0 18px 38px rgba(43,38,64,0.17);}
   .g-item:hover img{transform:scale(1.07);}
   .g-item .cap{
     position:absolute; left:0; right:0; bottom:0; padding:10px 14px 9px;
@@ -584,7 +618,10 @@
     opacity:0; pointer-events:none; transition:opacity .25s ease;
   }
   .lightbox.open{opacity:1; pointer-events:auto;}
-  .lightbox img{max-width:min(900px,92vw); max-height:84vh; border-radius:18px; border:6px solid var(--white);}
+  .lightbox img{
+    max-width:min(900px,92vw); max-height:84vh; border-radius:18px; border:6px solid var(--white);
+    transition:opacity .18s ease, transform .18s ease;
+  }
   .lightbox-close{
     position:absolute; top:26px; right:32px; width:44px; height:44px; border-radius:50%;
     background:var(--white); border:none; font-size:20px; cursor:pointer; color:var(--ink);
@@ -715,8 +752,17 @@
   }
   @media (max-width:760px){
     .nav-links, .nav-phone-wrap{display:none;}
+    .nav-right .btn-primary{display:none;}
     .nav-toggle{display:block;}
     .nav-right{gap:10px;}
+    .eyebrow{
+      display:inline-block;
+      max-width:100%;
+      white-space:normal;
+      line-height:1.25;
+      letter-spacing:.08em;
+      overflow-wrap:anywhere;
+    }
     nav.open .nav-links{
       display:flex; position:absolute; top:100%; left:0; right:0;
       background:var(--paper); flex-direction:column; padding:18px 28px; gap:18px;
@@ -724,11 +770,13 @@
     }
     .hero{padding:26px 0 48px;}
     .hero .container{gap:26px;}
+    .hero-copy{min-width:0;}
+    .hero p.lead{max-width:100%; overflow-wrap:anywhere;}
     .hero-photo-card{border-width:6px; border-radius:24px; transform:rotate(1deg);}
     .hero-photo-card img{height:300px;}
     .floating-tag{font-size:12.5px; padding:8px 12px; border-radius:14px; max-width:calc(100vw - 64px);}
     .tag-circle-time{left:8px; bottom:-12px;}
-    .tag-bilingual{right:8px; top:-12px;}
+    .tag-bilingual{display:none;}
     .trust-strip{padding:0 0 38px;}
     .trust-grid{grid-template-columns:1fr; gap:10px;}
     .trust-pill{padding:13px 14px; border-radius:16px;}
@@ -771,12 +819,13 @@
   @media (prefers-reduced-motion: reduce){
     html{scroll-behavior:auto;}
     *{transition:none !important; animation:none !important;}
+    .reveal{opacity:1 !important; transform:none !important;}
   }
   @media (max-width:480px){
     .logo-text span{display:none;}
     .logo-text strong{font-size:16px;}
     .logo-badge{width:38px; height:38px; font-size:18px;}
-    nav .btn-primary{display:none;}
+    nav .btn-primary, .nav-right .btn-primary{display:none;}
     nav{padding:12px 18px;}
   }
 </style>
@@ -815,10 +864,10 @@
   <section class="hero">
     <div class="container">
       <div class="hero-copy">
-        <span class="eyebrow">🏡 In-Home Childcare · Fremont, CA</span>
-        <h1>Licensed bilingual<br>home daycare in <span class="accent">Fremont</span></h1>
+        <span class="eyebrow">🏡 Bilingual care · nurse's heart</span>
+        <h1>Bilingual home daycare<br>with a <span class="accent">nurse's heart</span></h1>
         <span class="sub-es">Cuidado con cariño en inglés y español</span>
-        <p class="lead">A warm in-home program where little ones feel safe, loved, and ready to learn through play, routine, and daily English/Spanish moments.</p>
+        <p class="lead">Ale brings nursing experience, bilingual care, and a warm small-group routine so little ones feel safe, loved, and ready to learn.</p>
         <div class="hero-ctas">
           <a href="tel:+12066091653" class="btn btn-primary">📞 Call or Text Ale</a>
           <a href="#gallery" class="btn btn-ghost">📸 View Photos</a>
@@ -829,7 +878,7 @@
         <div class="hero-photo-card">
           <img src="assets/photos/first-day-smiles.jpg" alt="Ale smiling with a child holding first day of school signs with the child face covered for privacy" class="hero-first-day">
         </div>
-        <div class="floating-tag tag-circle-time">🧩 Bright playroom</div>
+        <div class="floating-tag tag-circle-time">🩺 Nurse's heart</div>
         <div class="floating-tag tag-bilingual">🌎 Bilingual EN/ES</div>
       </div>
     </div>
@@ -1126,6 +1175,25 @@
   const mainNav = document.getElementById('mainNav');
   navToggle.addEventListener('click', () => mainNav.classList.toggle('open'));
   document.querySelectorAll('.nav-links a').forEach(a => a.addEventListener('click', () => mainNav.classList.remove('open')));
+
+  // Gentle reveal motion
+  const revealItems = document.querySelectorAll('.section-head, .trust-pill, .why-mini div, .testi-card, .t-row, .g-item, .faq-item, .c-card, .rates-note');
+  if ('IntersectionObserver' in window) {
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add('in-view');
+        revealObserver.unobserve(entry.target);
+      });
+    }, { threshold: 0.14 });
+    revealItems.forEach((item, index) => {
+      item.classList.add('reveal');
+      item.style.transitionDelay = `${Math.min(index % 6, 5) * 45}ms`;
+      revealObserver.observe(item);
+    });
+  } else {
+    revealItems.forEach((item) => item.classList.add('in-view'));
+  }
 
   // Gallery lightbox
   const lightbox = document.getElementById('lightbox');
