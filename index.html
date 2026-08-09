@@ -1133,6 +1133,8 @@
   const lightboxCap = document.getElementById('lightboxCap');
   const galleryItems = Array.from(document.querySelectorAll('.g-item'));
   let activeGalleryIndex = 0;
+  let touchStartX = 0;
+  let touchStartY = 0;
   function showGalleryItem(index) {
     activeGalleryIndex = (index + galleryItems.length) % galleryItems.length;
     const item = galleryItems[activeGalleryIndex];
@@ -1150,6 +1152,21 @@
   function closeLightbox(){ lightbox.classList.remove('open'); lightboxImg.src=''; }
   document.getElementById('lightboxClose').addEventListener('click', closeLightbox);
   lightbox.addEventListener('click', (e) => { if(e.target === lightbox) closeLightbox(); });
+  lightbox.addEventListener('touchstart', (e) => {
+    if (!lightbox.classList.contains('open')) return;
+    touchStartX = e.changedTouches[0].clientX;
+    touchStartY = e.changedTouches[0].clientY;
+  }, { passive: true });
+  lightbox.addEventListener('touchend', (e) => {
+    if (!lightbox.classList.contains('open')) return;
+    const touchEndX = e.changedTouches[0].clientX;
+    const touchEndY = e.changedTouches[0].clientY;
+    const deltaX = touchEndX - touchStartX;
+    const deltaY = touchEndY - touchStartY;
+    if (Math.abs(deltaX) < 45 || Math.abs(deltaX) < Math.abs(deltaY)) return;
+    if (deltaX < 0) showGalleryItem(activeGalleryIndex + 1);
+    if (deltaX > 0) showGalleryItem(activeGalleryIndex - 1);
+  }, { passive: true });
   document.addEventListener('keydown', (e) => {
     if (!lightbox.classList.contains('open')) return;
     if (e.key === 'Escape') closeLightbox();
