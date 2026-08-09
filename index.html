@@ -59,63 +59,6 @@
   ]
 }
 </script>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "@id": "https://aleshomechildcare.com/#faq",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "Is Ale's Home Childcare licensed?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes. Ale's Home Childcare is a licensed childcare program in Fremont, California. The California license number shown on the site is 015701501."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Do children learn in English and Spanish?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes. Children hear and practice both English and Spanish through songs, calendar time, colors, shapes, numbers, letters, emotions, art, and daily routines."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "What are the childcare hours?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Ale's Home Childcare is open Monday through Friday from 8:00 AM to 5:30 PM."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Are meals included?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes. Breakfast, a snack, and lunch are included each day, so families do not need to pack a lunchbox."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Where is the daycare located?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Ale's Home Childcare is an in-home daycare in Fremont, CA, serving local Fremont families and nearby neighborhoods when the location is a good fit."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "How can parents schedule a tour or ask about openings?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Parents can call or text (206) 609-1653 or use the contact form on the website to ask questions, schedule a visit, or check current openings."
-      }
-    }
-  ]
-}
-</script>
 <link rel="icon" type="image/png" href="assets/brand/favicon.png">
 <link rel="apple-touch-icon" href="assets/brand/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -630,18 +573,6 @@
   }
 
   /* ---------- CONTACT ---------- */
-  .faq{background:var(--paper);}
-  .faq-grid{display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:14px;}
-  .faq-item{
-    background:var(--white);
-    border:2px solid rgba(43,38,64,0.10);
-    border-radius:var(--radius-sm);
-    padding:18px;
-    box-shadow:0 8px 18px rgba(43,38,64,0.06);
-  }
-  .faq-item h3{font-size:20px; margin-bottom:6px;}
-  .faq-item p{font-size:14.5px; margin:0;}
-
   .contact{
     background:linear-gradient(135deg, var(--grape) 0%, #6E3FAE 100%);
     color:var(--white);
@@ -803,7 +734,6 @@
     .trust-grid{grid-template-columns:repeat(3,1fr);}
     .gallery-grid{grid-template-columns:repeat(3,1fr); grid-auto-rows:150px;}
     .g-big{grid-column:span 2; grid-row:span 1;}
-    .faq-grid{grid-template-columns:1fr;}
     .contact-grid{grid-template-columns:repeat(3,1fr);}
   }
   @media (max-width:760px){
@@ -1141,26 +1071,6 @@
     </div>
   </section>
 
-  <!-- FAQ -->
-  <section class="faq" id="faq">
-    <div class="container">
-      <div class="section-head">
-        <span class="eyebrow">Questions parents ask</span>
-        <h2>Helpful details</h2>
-      </div>
-      <div class="faq-grid">
-        <article class="faq-item">
-          <h3>What ages do you care for?</h3>
-          <p>Reach out and Ale can share current openings, age fit, and whether the group is a good match.</p>
-        </article>
-        <article class="faq-item">
-          <h3>How do I visit or ask about openings?</h3>
-          <p>Call or text Ale at (206) 609-1653, or send the inquiry form in the contact section.</p>
-        </article>
-      </div>
-    </div>
-  </section>
-
   <!-- CONTACT -->
   <section style="padding:0 0 90px;">
     <div class="contact" id="contact">
@@ -1273,7 +1183,7 @@
   document.querySelectorAll('.nav-links a').forEach(a => a.addEventListener('click', () => mainNav.classList.remove('open')));
 
   // Gentle reveal motion
-  const revealItems = document.querySelectorAll('.section-head, .trust-pill, .why-mini div, .testi-card, .t-row, .g-item, .faq-item, .c-card, .contact-form, .rates-note');
+  const revealItems = document.querySelectorAll('.section-head, .trust-pill, .why-mini div, .testi-card, .t-row, .g-item, .c-card, .contact-form, .rates-note');
   if ('IntersectionObserver' in window) {
     const revealObserver = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
