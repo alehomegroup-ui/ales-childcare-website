@@ -202,7 +202,7 @@
     overflow:hidden;
     border:2px solid rgba(43,38,64,0.08);
   }
-  .logo-badge img{width:88%; height:88%; object-fit:contain; display:block;}
+  .logo-badge img{width:100%; height:100%; object-fit:cover; object-position:center center; display:block;}
   .logo-text{font-family:'Baloo 2',sans-serif; line-height:1.1;}
   .logo-text strong{display:block; font-size:19px; font-weight:800; color:var(--ink);}
   .logo-text span{display:block; font-size:12px; font-weight:600; color:var(--ink-soft); letter-spacing:.04em;}
@@ -507,7 +507,7 @@
     .testi-grid{grid-template-columns:1fr;}
     .testi-card{padding:20px 16px; gap:14px;}
     .testi-note-wrap{width:80px;}
-    .testi-note{width:80px; cursor:default;}
+    .testi-note{width:80px;}
   }
   .more-notes, .gallery-more{margin-top:18px;}
   .more-notes summary, .gallery-more summary{
@@ -1236,6 +1236,7 @@
   const lightboxImg = document.getElementById('lightboxImg');
   const lightboxCap = document.getElementById('lightboxCap');
   const galleryItems = Array.from(document.querySelectorAll('.g-item'));
+  const testimonialItems = Array.from(document.querySelectorAll('.testi-note-wrap'));
   let activeGalleryItems = galleryItems;
   let activeGalleryIndex = 0;
   let touchStartX = 0;
@@ -1258,6 +1259,12 @@
     showGalleryItem(index);
     lightbox.classList.add('open');
   }
+  function openTestimonialItem(item) {
+    activeGalleryItems = testimonialItems;
+    const index = Math.max(0, activeGalleryItems.indexOf(item));
+    showGalleryItem(index);
+    lightbox.classList.add('open');
+  }
   galleryItems.forEach((item) => {
     item.setAttribute('role', 'button');
     item.setAttribute('tabindex', '0');
@@ -1272,6 +1279,24 @@
       if (e.key !== 'Enter' && e.key !== ' ') return;
       e.preventDefault();
       openGalleryItem(item);
+    });
+  });
+  testimonialItems.forEach((item) => {
+    const name = item.closest('.testi-card')?.querySelector('.testi-name')?.textContent?.trim();
+    item.setAttribute('role', 'button');
+    item.setAttribute('tabindex', '0');
+    item.setAttribute('data-cap', name ? `Handwritten note from ${name}` : 'Handwritten family note');
+    item.setAttribute('aria-label', item.getAttribute('data-cap'));
+    item.addEventListener('click', () => openTestimonialItem(item));
+    item.addEventListener('pointerup', (e) => {
+      if (e.pointerType !== 'touch') return;
+      e.preventDefault();
+      openTestimonialItem(item);
+    });
+    item.addEventListener('keydown', (e) => {
+      if (e.key !== 'Enter' && e.key !== ' ') return;
+      e.preventDefault();
+      openTestimonialItem(item);
     });
   });
   function closeLightbox(){ lightbox.classList.remove('open'); lightboxImg.src=''; }
