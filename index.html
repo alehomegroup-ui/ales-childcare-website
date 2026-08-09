@@ -539,6 +539,8 @@
   .g-item img.focus-shape-tracing{object-position:center 28%;}
   .g-item img.focus-infant-crawl{object-position:center 38%;}
   .g-item img.focus-group-play{object-position:center 42%;}
+  .g-item img.focus-classroom-wide{object-position:center 58%;}
+  .g-item img.focus-learning-table{object-position:center 62%;}
   .g-item:hover{transform:translateY(-4px); box-shadow:0 18px 38px rgba(43,38,64,0.17);}
   .g-item:hover img{transform:scale(1.07);}
   .g-item .cap{
@@ -777,6 +779,7 @@
     .poster-card{padding:15px 12px 14px; min-height:116px;}
     .gallery-grid{grid-template-columns:repeat(2,1fr); grid-auto-rows:148px; gap:10px;}
     .gallery-grid > .g-big{grid-column:span 1; grid-row:span 1;}
+    .desktop-gallery-only{display:none;}
     .testi-card{padding:16px 14px;}
     .contact{padding:42px 18px;}
     .contact-grid{grid-template-columns:1fr;}
@@ -1027,6 +1030,18 @@
           <img src="assets/photos/shape-tracing-activity.jpg" alt="Child practicing shape tracing with a marker at the learning table with face covered for privacy" loading="lazy" class="focus-shape-tracing">
           <div class="cap">Shape tracing</div>
         </div>
+        <div class="g-item desktop-gallery-only" data-cap="Full classroom view with learning tables and play areas">
+          <img src="assets/photos/classroom-wide.jpg" alt="Wide view of the childcare classroom with learning tables, toys, and play areas" loading="lazy" class="focus-classroom-wide">
+          <div class="cap">Classroom view</div>
+        </div>
+        <div class="g-item desktop-gallery-only" data-cap="Learning table by the garden window">
+          <img src="assets/photos/learning-table.jpg" alt="Child-sized learning table with wooden activities near a sunny garden window" loading="lazy" class="focus-learning-table">
+          <div class="cap">Learning table</div>
+        </div>
+        <div class="g-item desktop-gallery-only" data-cap="Child showing a finished art project">
+          <img src="assets/photos/art-project.jpg" alt="Child holding a colorful art project with face covered for privacy" loading="lazy" class="focus-art">
+          <div class="cap">Art project</div>
+        </div>
       </div>
       <details class="gallery-more">
         <summary>Peek inside more of the daycare</summary>
@@ -1221,35 +1236,42 @@
   const lightboxImg = document.getElementById('lightboxImg');
   const lightboxCap = document.getElementById('lightboxCap');
   const galleryItems = Array.from(document.querySelectorAll('.g-item'));
+  let activeGalleryItems = galleryItems;
   let activeGalleryIndex = 0;
   let touchStartX = 0;
   let touchStartY = 0;
+  function getVisibleGalleryItems() {
+    return galleryItems.filter((item) => item.offsetParent !== null);
+  }
   function showGalleryItem(index) {
-    activeGalleryIndex = (index + galleryItems.length) % galleryItems.length;
-    const item = galleryItems[activeGalleryIndex];
+    const itemCount = activeGalleryItems.length;
+    activeGalleryIndex = (index + itemCount) % itemCount;
+    const item = activeGalleryItems[activeGalleryIndex];
     const img = item.querySelector('img');
     lightboxImg.src = img.src;
     lightboxImg.alt = img.alt;
     lightboxCap.textContent = item.getAttribute('data-cap') || '';
   }
-  function openGalleryItem(index) {
+  function openGalleryItem(item) {
+    activeGalleryItems = getVisibleGalleryItems();
+    const index = Math.max(0, activeGalleryItems.indexOf(item));
     showGalleryItem(index);
     lightbox.classList.add('open');
   }
-  galleryItems.forEach((item, index) => {
+  galleryItems.forEach((item) => {
     item.setAttribute('role', 'button');
     item.setAttribute('tabindex', '0');
     item.setAttribute('aria-label', `Open photo: ${item.getAttribute('data-cap') || 'daycare photo'}`);
-    item.addEventListener('click', () => openGalleryItem(index));
+    item.addEventListener('click', () => openGalleryItem(item));
     item.addEventListener('pointerup', (e) => {
       if (e.pointerType !== 'touch') return;
       e.preventDefault();
-      openGalleryItem(index);
+      openGalleryItem(item);
     });
     item.addEventListener('keydown', (e) => {
       if (e.key !== 'Enter' && e.key !== ' ') return;
       e.preventDefault();
-      openGalleryItem(index);
+      openGalleryItem(item);
     });
   });
   function closeLightbox(){ lightbox.classList.remove('open'); lightboxImg.src=''; }
