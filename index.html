@@ -116,7 +116,8 @@
   ]
 }
 </script>
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2064%2064%22%3E%3Crect%20width%3D%2264%22%20height%3D%2264%22%20rx%3D%2214%22%20fill%3D%22%23fff4df%22%2F%3E%3Cpath%20d%3D%22M12%2031%2032%2015l20%2016v21a4%204%200%200%201-4%204H16a4%204%200%200%201-4-4V31z%22%20fill%3D%22%23f7a84b%22%2F%3E%3Cpath%20d%3D%22M8%2033%2032%2013l24%2020%22%20fill%3D%22none%22%20stroke%3D%22%237c4a24%22%20stroke-width%3D%225%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%2F%3E%3Cpath%20d%3D%22M32%2045s-10-5.7-10-12a6%206%200%200%201%2010-4.4A6%206%200%200%201%2042%2033c0%206.3-10%2012-10%2012z%22%20fill%3D%22%23e94b5f%22%2F%3E%3Cpath%20d%3D%22M22%2056V40h20v16%22%20fill%3D%22%23ffe2a8%22%2F%3E%3C%2Fsvg%3E">
+<link rel="icon" type="image/png" href="assets/brand/favicon.png">
+<link rel="apple-touch-icon" href="assets/brand/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Mulish:ital,wght@0,400;0,500;0,600;0,700;0,800;1,500&display=swap" rel="stylesheet">
@@ -250,13 +251,15 @@
   }
   .logo{display:flex; align-items:center; gap:11px; text-decoration:none;}
   .logo-badge{
-    width:46px; height:46px; border-radius:50%;
-    background:linear-gradient(135deg,var(--sun),var(--coral));
+    width:54px; height:54px; border-radius:50%;
+    background:var(--white);
     display:flex; align-items:center; justify-content:center;
-    font-size:22px;
-    box-shadow:0 4px 0 rgba(43,38,64,0.15);
+    box-shadow:0 4px 0 rgba(43,38,64,0.12);
     flex-shrink:0;
+    overflow:hidden;
+    border:2px solid rgba(43,38,64,0.08);
   }
+  .logo-badge img{width:100%; height:100%; object-fit:cover; display:block;}
   .logo-text{font-family:'Baloo 2',sans-serif; line-height:1.1;}
   .logo-text strong{display:block; font-size:19px; font-weight:800; color:var(--ink);}
   .logo-text span{display:block; font-size:12px; font-weight:600; color:var(--ink-soft); letter-spacing:.04em;}
@@ -880,7 +883,7 @@
   @media (max-width:480px){
     .logo-text span{display:none;}
     .logo-text strong{font-size:16px;}
-    .logo-badge{width:38px; height:38px; font-size:18px;}
+    .logo-badge{width:42px; height:42px;}
     nav .btn-primary, .nav-right .btn-primary{display:none;}
     nav{padding:12px 18px;}
   }
@@ -899,7 +902,7 @@
 <header class="nav-wrap">
   <nav id="mainNav">
     <a href="#top" class="logo">
-      <div class="logo-badge">🧸</div>
+      <div class="logo-badge"><img src="assets/brand/ale-home-daycare-logo.jpg" alt="Ale Home Daycare logo"></div>
       <div class="logo-text">
         <strong>Ale's Home Childcare</strong>
         <span>Fremont, CA · EN/ES</span>
@@ -1232,7 +1235,7 @@
   <div class="container">
     <div class="foot-grid">
       <a href="#top" class="logo">
-        <div class="logo-badge">🧸</div>
+        <div class="logo-badge"><img src="assets/brand/ale-home-daycare-logo.jpg" alt="Ale Home Daycare logo"></div>
         <div class="logo-text">
           <strong>Ale's Home Childcare</strong>
           <span>Licensed in-home childcare</span>
