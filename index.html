@@ -684,6 +684,7 @@
     box-shadow:0 0 0 3px rgba(255,200,61,0.28);
   }
   .contact-form .hidden-field{display:none;}
+  .form-anchor{display:block; height:0; scroll-margin-top:96px;}
   .form-submit{
     justify-self:center;
     min-width:220px;
@@ -841,8 +842,12 @@
       display:flex; align-items:center; justify-content:center; gap:6px;
       background:var(--coral); color:var(--white); border-radius:999px; padding:11px 10px;
       text-decoration:none; font-family:'Baloo 2',sans-serif; font-weight:800; font-size:14px;
+      white-space:nowrap;
     }
     .mobile-contact-bar a:last-child{background:var(--grape);}
+  }
+  @media (max-width:360px){
+    .mobile-contact-bar a{font-size:13px; gap:4px; padding:10px 8px;}
   }
   @media (prefers-reduced-motion: reduce){
     html{scroll-behavior:auto;}
@@ -1138,7 +1143,8 @@
           <div class="c-card"><span class="ic">🕗</span><div><strong>Hours</strong><span>Mon-Fri, 8:00-5:30</span></div></div>
           <div class="c-card"><span class="ic">✅</span><div><strong>Licensed in-home daycare</strong><span>CA License # 015701501</span></div></div>
         </div>
-        <form class="contact-form" id="inquiry-form" action="https://formsubmit.co/alehomegroup@gmail.com" method="POST">
+        <span id="inquiry-form" class="form-anchor" aria-hidden="true"></span>
+        <form class="contact-form" action="https://formsubmit.co/alehomegroup@gmail.com" method="POST">
           <input type="hidden" name="_subject" value="New inquiry from Ale's Home Childcare website">
           <input type="hidden" name="_template" value="table">
           <input type="hidden" name="_captcha" value="false">
