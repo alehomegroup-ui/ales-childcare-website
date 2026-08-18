@@ -322,6 +322,50 @@
   .trust-pill strong{display:block; font-family:'Baloo 2',sans-serif; font-size:14px; color:var(--ink);}
   .trust-pill small{display:block; font-size:12px; color:var(--ink-soft); margin-top:1px;}
 
+  /* ---------- SPACE PREVIEW ---------- */
+  .space-preview{
+    padding:0 0 54px;
+    background:var(--cream);
+  }
+  .space-preview-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:16px;
+  }
+  .space-preview-card{
+    position:relative;
+    min-height:230px;
+    border-radius:22px;
+    overflow:hidden;
+    border:6px solid var(--white);
+    box-shadow:var(--shadow-card);
+  }
+  .space-preview-card img{
+    width:100%;
+    height:100%;
+    min-height:230px;
+    object-fit:cover;
+    display:block;
+  }
+  .space-preview-card:first-child img{object-position:center 58%;}
+  .space-preview-card:last-child img{object-position:center 52%;}
+  .space-preview-card span{
+    position:absolute;
+    left:14px;
+    bottom:14px;
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+    font-family:'Baloo 2',sans-serif;
+    font-weight:800;
+    font-size:15px;
+    color:var(--ink);
+    background:rgba(255,255,255,0.94);
+    padding:8px 12px;
+    border-radius:999px;
+    box-shadow:0 8px 20px rgba(43,38,64,0.16);
+  }
+
   /* ---------- ABOUT ---------- */
   .about{background:var(--paper);}
   .about .container{display:grid; grid-template-columns:0.82fr 1.18fr; gap:44px; align-items:center;}
@@ -802,6 +846,11 @@
     .trust-strip{padding:0 0 38px;}
     .trust-grid{grid-template-columns:1fr; gap:10px;}
     .trust-pill{padding:13px 14px; border-radius:16px;}
+    .space-preview{padding:0 0 42px;}
+    .space-preview-grid{grid-template-columns:1fr; gap:12px;}
+    .space-preview-card{min-height:190px; border-width:5px; border-radius:20px;}
+    .space-preview-card img{min-height:190px;}
+    .space-preview-card span{font-size:14px; left:12px; bottom:12px;}
     .about-photo img{height:310px;}
     .about-photo .sticker{right:8px; bottom:-18px; width:94px; height:94px; font-size:13.5px;}
     .hero-ctas .btn{width:100%; white-space:normal;}
@@ -900,7 +949,7 @@
     </ul>
     <div class="nav-right">
       <a href="tel:+12066091653" class="nav-phone nav-phone-wrap">📞 (206) 609-1653</a>
-      <a href="#contact" class="btn btn-primary" style="padding:10px 20px; font-size:14px;">Schedule a Tour</a>
+      <a href="#contact" class="btn btn-primary" style="padding:10px 20px; font-size:14px;">Check Availability</a>
       <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
         <span></span><span></span><span></span>
       </button>
@@ -916,10 +965,10 @@
         <span class="eyebrow">🏡 Licensed home daycare in <span class="no-break">Fremont, CA</span></span>
         <h1>Bilingual home daycare in Fremont<br>with a <span class="accent">nurse's heart</span></h1>
         <span class="sub-es">Cuidado con cariño en inglés y español</span>
-        <p class="lead">Ale's Home Childcare offers licensed family childcare for infants, toddlers, and preschoolers, with bilingual care and a spacious home setting for play, rest, exploration, and learning.</p>
+        <p class="lead">Ale's Home Childcare offers licensed family childcare for infants, toddlers, and preschoolers, with English and Spanish, daily meals, outdoor play, and personal attention in a spacious home setting.</p>
         <div class="hero-ctas">
-          <a href="tel:+12066091653" class="btn btn-primary">📞 Call or Text Ale</a>
-          <a href="#gallery" class="btn btn-ghost">📸 View Photos</a>
+          <a href="#contact" class="btn btn-primary">Check Availability &amp; Tour</a>
+          <a href="tel:+12066091653" class="btn btn-ghost">📞 Call or Text</a>
         </div>
         <p class="hero-availability"><span>Now speaking with families</span> for current and upcoming openings. Rates, openings, and next steps can be shared when you reach out or schedule a visit.</p>
       </div>
@@ -938,10 +987,25 @@
       <div class="trust-grid">
         <div class="trust-pill"><span class="ic">🌎</span><div><strong>Bilingual EN/ES</strong><small>English & Spanish daily</small></div></div>
         <div class="trust-pill"><span class="ic">🍽️</span><div><strong>Meals included</strong><small>Breakfast, lunch & snacks included; home food welcome</small></div></div>
-        <div class="trust-pill"><span class="ic">🏡</span><div><strong>Big home, small group</strong><small>Large indoor & outdoor spaces</small></div></div>
+        <div class="trust-pill"><span class="ic">🏡</span><div><strong>Big home, small group</strong><small>Licensed small group for more individual attention</small></div></div>
         <div class="trust-pill"><span class="ic">🕗</span><div><strong>8:00 AM – 5:30 PM</strong><small>Monday – Friday</small></div></div>
         <div class="trust-pill"><span class="ic">👶</span><div><strong>Ages served</strong><small>Infants, toddlers &amp; preschoolers</small></div></div>
         <div class="trust-pill"><span class="ic">🛡️</span><div><strong>Licensed in-home daycare</strong><small>Fremont, CA - License # 015701501</small></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="space-preview" aria-label="Indoor and outdoor childcare spaces">
+    <div class="container">
+      <div class="space-preview-grid">
+        <div class="space-preview-card">
+          <img src="assets/photos/classroom-wide.jpg" alt="Spacious indoor childcare room with learning tables, toys, and open play areas">
+          <span>Large indoor playroom</span>
+        </div>
+        <div class="space-preview-card">
+          <img src="assets/photos/fenced-outdoor-yard.jpg" alt="Large fenced outdoor play yard with soft turf and toddler ride-on toys">
+          <span>Fenced outdoor yard</span>
+        </div>
       </div>
     </div>
   </section>
@@ -1264,7 +1328,7 @@
   });
 
   // Gentle reveal motion
-  const revealItems = document.querySelectorAll('.section-head, .trust-pill, .why-mini div, .testi-card, .t-row, .g-item, .c-card, .contact-form, .rates-note');
+  const revealItems = document.querySelectorAll('.section-head, .trust-pill, .space-preview-card, .why-mini div, .testi-card, .t-row, .g-item, .c-card, .contact-form, .rates-note');
   if ('IntersectionObserver' in window) {
     const revealObserver = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
