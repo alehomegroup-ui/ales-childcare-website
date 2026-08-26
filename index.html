@@ -950,7 +950,7 @@
       <li><a href="#contact">Contact</a></li>
     </ul>
     <div class="nav-right">
-      <a href="tel:2066091653" class="nav-phone nav-phone-wrap">📞 (206) 609-1653</a>
+      <a href="tel:+12066091653" class="nav-phone nav-phone-wrap">📞 (206) 609-1653</a>
       <a href="#contact" class="btn btn-primary" style="padding:10px 20px; font-size:14px;">Check Availability</a>
       <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
         <span></span><span></span><span></span>
@@ -970,7 +970,7 @@
         <p class="lead">Ale's Home Childcare offers licensed family childcare for infants, toddlers, and preschoolers, with English and Spanish, daily meals, outdoor play, and personal attention in a spacious home setting.</p>
         <div class="hero-ctas">
           <a href="#contact" class="btn btn-primary">Check Availability &amp; Tour</a>
-          <a href="tel:2066091653" class="btn btn-ghost">📞 Call or Text</a>
+          <a href="tel:+12066091653" class="btn btn-ghost">📞 Call or Text</a>
         </div>
         <p class="hero-availability"><span>Now speaking with families</span> for current and upcoming openings. Rates, openings, and next steps can be shared when you reach out or schedule a visit.</p>
       </div>
@@ -1225,7 +1225,7 @@
           <p>Call, text, or send a quick inquiry to ask about openings, ages served, rates, or scheduling a visit. Located in Fremont near Apni Mandi.</p>
         </div>
         <div class="contact-grid">
-          <a href="tel:2066091653" class="c-card"><span class="ic">📞</span><div><strong>Call or text</strong><span>(206) 609-1653</span></div></a>
+          <a href="tel:+12066091653" class="c-card"><span class="ic">📞</span><div><strong>Call or text</strong><span>(206) 609-1653</span></div></a>
           <a href="https://maps.app.goo.gl/2Vq2AAqPZk8vuXNBA" target="_blank" rel="noopener" class="c-card"><span class="ic">📍</span><div><strong>Location</strong><span>Fremont, CA<br>Near Apni Mandi</span></div></a>
         </div>
         <form class="contact-form" action="https://formsubmit.co/alehomegroup@gmail.com" method="POST">
@@ -1285,7 +1285,7 @@
 </main>
 
 <div class="mobile-contact-bar" aria-label="Quick contact">
-  <a href="tel:2066091653">📞 Call/Text</a>
+  <a href="tel:+12066091653">📞 Call/Text</a>
   <a href="#contact">📝 Send Inquiry</a>
 </div>
 
@@ -1374,16 +1374,9 @@
     });
   });
 
-  function isMetaInAppBrowser() {
-    const ua = navigator.userAgent || '';
-    return /FBAN|FBAV|FBIOS|FB_IAB|FB4A|Instagram/i.test(ua);
-  }
-
   document.querySelectorAll('a[href^="tel:"]').forEach((link) => {
     link.setAttribute('target', '_self');
-    link.addEventListener('click', (event) => {
-      const href = link.getAttribute('href');
-      if (!href) return;
+    link.addEventListener('click', () => {
       if (typeof window.clarity === 'function') {
         window.clarity('event', 'phone_click');
       }
@@ -1397,9 +1390,6 @@
           contact_channel: 'phone'
         });
       }
-      if (!isMetaInAppBrowser()) return;
-      event.preventDefault();
-      window.location.assign(href);
     });
   });
 
