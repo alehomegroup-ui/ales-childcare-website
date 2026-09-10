@@ -115,6 +115,11 @@ s.parentNode.insertBefore(t,s)}(window, document,'script',
 fbq('init', '1544914094036970');
 fbq('init', '1537522611391485');
 fbq('track', 'PageView');
+fbq('track', 'Lead', {
+  content_name: 'Childcare Inquiry Submitted',
+  content_category: 'Contact Form',
+  contact_channel: 'form'
+});
 </script>
 <noscript><img height="1" width="1" style="display:none"
 src="https://www.facebook.com/tr?id=1544914094036970&ev=PageView&noscript=1"
@@ -122,6 +127,14 @@ alt=""><img height="1" width="1" style="display:none"
 src="https://www.facebook.com/tr?id=1537522611391485&ev=PageView&noscript=1"
 alt=""></noscript>
 <!-- End Meta Pixel Code -->
+<script>
+  if (typeof window.gtag === 'function') {
+    window.gtag('event', 'generate_lead', {
+      event_category: 'Contact Form',
+      event_label: 'Childcare Inquiry Submitted'
+    });
+  }
+</script>
 </head>
 <body>
 <!-- Google Tag Manager (noscript) -->
