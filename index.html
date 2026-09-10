@@ -1435,6 +1435,52 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     revealItems.forEach((item) => item.classList.add('in-view'));
   }
 
+  const trackedContentSections = new Set();
+  const contentSections = [
+    { id: 'testimonials', name: 'Parent Reviews', category: 'Social Proof' },
+    { id: 'gallery', name: 'Daycare Photos', category: 'Gallery' },
+    { id: 'contact', name: 'Contact Inquiry Section', category: 'Contact' }
+  ];
+
+  function trackContentSection(section) {
+    if (trackedContentSections.has(section.id)) return;
+    trackedContentSections.add(section.id);
+    if (typeof window.clarity === 'function') {
+      window.clarity('event', `view_${section.id}`);
+    }
+    if (typeof window.fbq === 'function') {
+      window.fbq('track', 'ViewContent', {
+        content_name: section.name,
+        content_category: section.category,
+        content_type: 'website_section'
+      });
+    }
+    if (typeof window.gtag === 'function') {
+      window.gtag('event', 'view_content', {
+        content_name: section.name,
+        content_category: section.category,
+        content_type: 'website_section'
+      });
+    }
+  }
+
+  if ('IntersectionObserver' in window) {
+    const contentObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        const section = contentSections.find((item) => item.id === entry.target.id);
+        if (!section) return;
+        trackContentSection(section);
+        contentObserver.unobserve(entry.target);
+      });
+    }, { threshold: 0.35 });
+
+    contentSections.forEach((section) => {
+      const element = document.getElementById(section.id);
+      if (element) contentObserver.observe(element);
+    });
+  }
+
   document.querySelectorAll('.contact-form').forEach((form) => {
     form.addEventListener('submit', () => {
       const referralSource = form.querySelector('select[name="Where did you find us?"]')?.value || 'Not selected';
@@ -1495,6 +1541,20 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         window.fbq('trackCustom', 'SocialLinkClick', {
           content_name: 'Social Link Click',
           social_channel: channel,
+          link_url: link.href
+        });
+        if (channel === 'google_maps') {
+          window.fbq('track', 'FindLocation', {
+            content_name: 'Google Maps Click',
+            content_category: 'Location',
+            location_name: 'Ale Home Childcare',
+            link_url: link.href
+          });
+        }
+      }
+      if (channel === 'google_maps' && typeof window.gtag === 'function') {
+        window.gtag('event', 'find_location', {
+          location_name: 'Ale Home Childcare',
           link_url: link.href
         });
       }
