@@ -618,10 +618,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   .g-item img.focus-fine-motor{object-position:center 36%;}
   .g-item img.focus-first-day-art{object-position:center 44%;}
   .g-item img.focus-focused-art{object-position:center 28%;}
+  .g-item img.focus-breakfast{object-position:center 48%;}
   .g-item img.focus-shaded-rides{object-position:center 45%;}
   .g-item img.focus-magna-tiles{object-position:center 42%;}
   .g-item img.focus-outdoor-car{object-position:center 44%;}
   .g-item img.focus-story-time{object-position:center 35%;}
+  .mobile-gallery-only{display:none;}
   .g-item:hover{transform:translateY(-4px); box-shadow:0 18px 38px rgba(43,38,64,0.17);}
   .g-item:hover img{transform:scale(1.07);}
   .g-item .cap{
@@ -885,6 +887,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     .gallery-grid{grid-template-columns:repeat(2,1fr); grid-auto-rows:148px; gap:10px;}
     .gallery-grid > .g-big{grid-column:span 1; grid-row:span 1;}
     .desktop-gallery-only{display:none;}
+    .mobile-gallery-only{display:block;}
     .lightbox{padding:24px 12px 70px;}
     .lightbox img{max-width:94vw; max-height:78vh; border-width:4px;}
     .lightbox-close{top:18px; right:18px; width:40px; height:40px;}
@@ -1216,6 +1219,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <details class="gallery-more">
         <summary><span class="summary-closed">See more photos</span><span class="summary-open">Show fewer photos</span></summary>
         <div class="gallery-grid gallery-extra-grid">
+          <div class="g-item" data-cap="Healthy breakfast">
+            <img src="assets/photos/healthy-breakfast.jpg" alt="Child enjoying a healthy breakfast with pancakes and fresh fruit at Ale's Home Childcare with face covered for privacy" loading="lazy" class="focus-breakfast">
+            <div class="cap">Healthy breakfast</div>
+          </div>
+          <div class="g-item mobile-gallery-only" data-cap="Child showing a finished art project">
+            <img src="assets/photos/art-project.jpg" alt="Child holding a colorful art project with face covered for privacy" loading="lazy" class="focus-art">
+            <div class="cap">Art project</div>
+          </div>
           <div class="g-item" data-cap="Fine-motor shape play">
             <img src="assets/photos/fine-motor-shape-play.jpg" alt="Child practicing fine-motor skills with colorful wooden shape pieces at Ale's Home Childcare with face covered for privacy" loading="lazy" class="focus-fine-motor">
             <div class="cap">Fine-motor play</div>
