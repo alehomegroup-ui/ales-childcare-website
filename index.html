@@ -347,7 +347,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     overflow:hidden;
     border:6px solid var(--white);
     box-shadow:var(--shadow-card);
+    cursor:pointer;
   }
+  .space-preview-card:focus-visible{outline:4px solid rgba(255,203,69,.9); outline-offset:4px;}
   .space-preview-card img{
     width:100%;
     height:100%;
@@ -356,7 +358,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     display:block;
   }
   .space-preview-card:first-child img{object-position:center 58%;}
-  .space-preview-card:last-child img{object-position:center 52%;}
+  .space-preview-card:last-child img{object-position:center 48%;}
   .space-preview-card span{
     position:absolute;
     left:14px;
@@ -1045,12 +1047,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <section class="space-preview" aria-label="Indoor and outdoor childcare spaces">
     <div class="container">
       <div class="space-preview-grid">
-        <div class="space-preview-card">
+        <div class="space-preview-card" data-cap="Large indoor playroom">
           <img src="assets/photos/classroom-wide.jpg" alt="Spacious indoor childcare room with learning tables, toys, and open play areas">
           <span>Large indoor playroom</span>
         </div>
-        <div class="space-preview-card">
-          <img src="assets/photos/fenced-outdoor-yard.jpg" alt="Large fenced outdoor play yard with soft turf and toddler ride-on toys">
+        <div class="space-preview-card" data-cap="Fenced outdoor yard with shaded canopy">
+          <img src="assets/photos/outdoor-yard-canopy.jpg" alt="Large fenced outdoor play yard with soft turf, ride-on toys, and Ale Home Daycare canopy for shade">
           <span>Fenced outdoor yard</span>
         </div>
       </div>
@@ -1565,6 +1567,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   const lightbox = document.getElementById('lightbox');
   const lightboxImg = document.getElementById('lightboxImg');
   const lightboxCap = document.getElementById('lightboxCap');
+  const spacePreviewItems = Array.from(document.querySelectorAll('.space-preview-card'));
   const galleryItems = Array.from(document.querySelectorAll('.g-item'));
   const testimonialItems = Array.from(document.querySelectorAll('.testi-note-wrap'));
   let activeGalleryItems = galleryItems;
@@ -1595,12 +1598,34 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     showGalleryItem(index);
     lightbox.classList.add('open');
   }
+  function openSpacePreviewItem(item) {
+    activeGalleryItems = spacePreviewItems;
+    const index = Math.max(0, activeGalleryItems.indexOf(item));
+    showGalleryItem(index);
+    lightbox.classList.add('open');
+  }
   function openTestimonialItem(item) {
     activeGalleryItems = testimonialItems;
     const index = Math.max(0, activeGalleryItems.indexOf(item));
     showGalleryItem(index);
     lightbox.classList.add('open');
   }
+  spacePreviewItems.forEach((item) => {
+    item.setAttribute('role', 'button');
+    item.setAttribute('tabindex', '0');
+    item.setAttribute('aria-label', `Open photo: ${item.getAttribute('data-cap') || 'daycare space'}`);
+    item.addEventListener('click', () => openSpacePreviewItem(item));
+    item.addEventListener('pointerup', (e) => {
+      if (e.pointerType !== 'touch') return;
+      e.preventDefault();
+      openSpacePreviewItem(item);
+    });
+    item.addEventListener('keydown', (e) => {
+      if (e.key !== 'Enter' && e.key !== ' ') return;
+      e.preventDefault();
+      openSpacePreviewItem(item);
+    });
+  });
   galleryItems.forEach((item) => {
     item.setAttribute('role', 'button');
     item.setAttribute('tabindex', '0');
