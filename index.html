@@ -656,6 +656,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     position:fixed; inset:0; background:rgba(43,38,64,0.86); z-index:100;
     display:flex; align-items:center; justify-content:center; padding:32px;
     opacity:0; pointer-events:none; transition:opacity .25s ease;
+    touch-action:pan-y;
   }
   .lightbox.open{opacity:1; pointer-events:auto;}
   .lightbox img{
@@ -681,6 +682,42 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     position:absolute; bottom:34px; left:0; right:0; text-align:center;
     color:var(--white); font-family:'Baloo 2',sans-serif; font-weight:600;
   }
+
+  /* ---------- QUICK INQUIRY ---------- */
+  .quick-inquiry{padding:18px 0 58px;}
+  .quick-inquiry-card{
+    display:grid;
+    grid-template-columns:minmax(230px,.8fr) minmax(0,1.7fr);
+    align-items:center;
+    gap:24px;
+    padding:26px;
+    border:3px solid var(--ink);
+    border-radius:28px;
+    background:linear-gradient(135deg,#FFF3BF 0%,#FFE0D5 100%);
+    box-shadow:0 12px 0 rgba(43,38,64,.10),0 20px 34px rgba(43,38,64,.10);
+  }
+  .quick-inquiry-copy h2{font-size:clamp(27px,3.6vw,38px); margin-bottom:6px;}
+  .quick-inquiry-copy p{margin:0; font-size:15px;}
+  .quick-inquiry-form{display:grid; grid-template-columns:1fr 1fr 1fr auto; gap:10px; align-items:end;}
+  .quick-inquiry-form label{display:grid; gap:6px; font:700 13px 'Baloo 2',sans-serif;}
+  .quick-inquiry-form input,
+  .quick-inquiry-form select{
+    width:100%; min-height:50px; padding:11px 12px;
+    border:2px solid rgba(43,38,64,.22); border-radius:14px;
+    background:var(--white); color:var(--ink); font:600 16px 'Mulish',sans-serif;
+  }
+  .quick-inquiry-form input:focus,
+  .quick-inquiry-form select:focus{outline:3px solid rgba(136,87,201,.22); border-color:var(--grape);}
+  .quick-inquiry-form .btn{min-height:50px; padding-inline:20px;}
+  .quick-inquiry-note{grid-column:1/-1; margin:2px 0 0; font-size:12px; text-align:right;}
+  .gallery-cta{
+    display:flex; align-items:center; justify-content:space-between; gap:22px;
+    margin-top:26px; padding:20px 22px; border:2px solid var(--cream-2);
+    border-radius:22px; background:var(--white); box-shadow:var(--shadow-soft);
+  }
+  .gallery-cta h3{margin:0 0 3px; font-size:23px;}
+  .gallery-cta p{margin:0; font-size:14px;}
+  .gallery-cta-actions{display:flex; gap:10px; flex-shrink:0;}
 
   /* ---------- CONTACT ---------- */
   .contact{
@@ -863,6 +900,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     .contact-grid{grid-template-columns:repeat(2,1fr);}
     .nav-links{gap:22px;}
     .nav-phone-wrap{display:none;}
+    .quick-inquiry-card{grid-template-columns:1fr;}
+    .quick-inquiry-form{grid-template-columns:repeat(3,1fr);}
+    .quick-inquiry-form .btn{grid-column:1/-1;}
   }
   @media (max-width:860px){
     .nav-links{display:none;}
@@ -932,6 +972,14 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     .lightbox-next{right:calc(50% - 54px);}
     .lightbox-cap{bottom:66px; padding:0 14px; font-size:14px;}
     .testi-card{padding:16px 14px;}
+    .quick-inquiry{padding:6px 0 46px; scroll-margin-top:84px;}
+    .quick-inquiry-card{gap:18px; padding:20px 16px; border-radius:22px;}
+    .quick-inquiry-form{grid-template-columns:1fr;}
+    .quick-inquiry-form .btn{grid-column:auto; width:100%;}
+    .quick-inquiry-note{grid-column:auto; text-align:center;}
+    .gallery-cta{align-items:stretch; flex-direction:column; padding:18px 16px;}
+    .gallery-cta-actions{display:grid; grid-template-columns:1fr;}
+    .gallery-cta-actions .btn{width:100%;}
     .contact{padding:42px 18px;}
     .contact-grid{grid-template-columns:1fr;}
     .c-card{padding:11px 12px;}
@@ -956,7 +1004,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       text-decoration:none; font-family:'Baloo 2',sans-serif; font-weight:800; font-size:14px;
       white-space:nowrap;
     }
-    .mobile-contact-bar a:last-child{background:var(--grape);}
+    .mobile-contact-bar a:first-child{background:var(--white); color:var(--grape-deep); border:2px solid var(--grape);}
+    .mobile-contact-bar a:last-child{background:var(--coral);}
     .mobile-contact-bar a:active{transform:scale(.97); filter:brightness(.94);}
     .availability-prompt{
       position:fixed;
@@ -1105,7 +1154,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </ul>
     <div class="nav-right">
       <a href="tel:12066091653" class="nav-phone nav-phone-wrap">📞 (206) 609-1653</a>
-      <a href="#contact" class="btn btn-primary" style="padding:10px 20px; font-size:14px;">Check Availability</a>
+      <a href="#quick-inquiry" class="btn btn-primary" data-conversion-cta="nav_check_openings" style="padding:10px 20px; font-size:14px;">Check Openings</a>
       <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
         <span></span><span></span><span></span>
       </button>
@@ -1123,7 +1172,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <span class="sub-es">Cuidado con cariño en inglés y español</span>
         <p class="lead">Ale's Home Childcare offers licensed family childcare for ages 3 months to 5 years, with English and Spanish, daily meals, outdoor play, and personal attention in a spacious home setting.</p>
         <div class="hero-ctas">
-          <a href="#contact" class="btn btn-primary">Check Availability &amp; Tour</a>
+          <a href="#quick-inquiry" class="btn btn-primary" data-conversion-cta="hero_check_openings">Check Openings &amp; Tour</a>
           <a href="tel:12066091653" class="btn btn-ghost">📞 Call or Text</a>
         </div>
         <p class="hero-availability"><span>Now speaking with families</span> for current and upcoming openings. Full-time, part-time, and flexible drop-off care can be discussed around your family's schedule.</p>
@@ -1246,6 +1295,41 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
         </div>
       </details>
+    </div>
+  </section>
+
+  <!-- EARLY MOBILE-FIRST INQUIRY -->
+  <section class="quick-inquiry" id="quick-inquiry" aria-labelledby="quickInquiryTitle">
+    <div class="container">
+      <div class="quick-inquiry-card">
+        <div class="quick-inquiry-copy">
+          <span class="eyebrow">Current openings</span>
+          <h2 id="quickInquiryTitle">See if Ale has a spot for your child</h2>
+          <p>Send three quick details. Ale will call or text you about availability and a family tour.</p>
+        </div>
+        <form class="quick-inquiry-form" data-form-location="early_inquiry" aria-label="Quick childcare availability inquiry" action="https://formsubmit.co/alehomegroup@gmail.com" method="POST">
+          <input type="hidden" name="_subject" value="New quick availability inquiry from Ale's Home Childcare website">
+          <input type="hidden" name="_template" value="table">
+          <input type="hidden" name="_captcha" value="false">
+          <input type="hidden" name="_next" value="https://aleshomechildcare.com/thank-you.html">
+          <input type="text" name="_honey" class="hidden-field" tabindex="-1" autocomplete="off">
+          <label>Parent's first name
+            <input type="text" name="Parent first name" autocomplete="given-name" enterkeyhint="next" required data-clarity-mask="true">
+          </label>
+          <label>Phone number
+            <input type="tel" name="Phone number" autocomplete="tel" inputmode="tel" enterkeyhint="next" required data-clarity-mask="true">
+          </label>
+          <label>Child's age
+            <select name="Child age" required>
+              <option value="">Select age</option>
+              <option>3–11 months</option><option>1 year</option><option>2 years</option>
+              <option>3 years</option><option>4 years</option><option>5 years</option>
+            </select>
+          </label>
+          <button type="submit" class="btn btn-primary">Check Openings</button>
+          <p class="quick-inquiry-note">No obligation. Your information is used only to reply to your childcare inquiry.</p>
+        </form>
+      </div>
     </div>
   </section>
 
@@ -1447,6 +1531,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           </div>
         </div>
       </details>
+      <div class="gallery-cta" aria-label="Check childcare openings after viewing the gallery">
+        <div>
+          <h3>Like what you see?</h3>
+          <p>Ask about current openings for ages 3 months to 5 years and schedule a family tour.</p>
+        </div>
+        <div class="gallery-cta-actions">
+          <a href="#quick-inquiry" class="btn btn-primary" data-conversion-cta="gallery_check_openings">Check Openings</a>
+          <a href="tel:12066091653" class="btn btn-ghost" data-conversion-cta="gallery_call">Call Ale</a>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -1457,7 +1551,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="section-head">
           <span class="eyebrow">💌 Get in touch</span>
         </div>
-        <form class="contact-form" aria-label="Childcare availability inquiry" action="https://formsubmit.co/alehomegroup@gmail.com" method="POST">
+        <form class="contact-form" data-form-location="bottom_contact" aria-label="Childcare availability inquiry" action="https://formsubmit.co/alehomegroup@gmail.com" method="POST">
           <input type="hidden" name="_subject" value="New inquiry from Ale's Home Childcare website">
           <input type="hidden" name="_template" value="table">
           <input type="hidden" name="_captcha" value="false">
@@ -1467,13 +1561,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <label>First name
               <input type="text" name="First name" autocomplete="given-name" required data-clarity-mask="true">
             </label>
-            <label>Last name
-              <input type="text" name="Last name" autocomplete="family-name" required data-clarity-mask="true">
+            <label>Last name <span class="optional-label">optional</span>
+              <input type="text" name="Last name" autocomplete="family-name" data-clarity-mask="true">
             </label>
           </div>
           <div class="form-row">
             <label>Phone number
-              <input type="tel" name="Phone number" autocomplete="tel" required data-clarity-mask="true">
+              <input type="tel" name="Phone number" autocomplete="tel" inputmode="tel" enterkeyhint="next" required data-clarity-mask="true">
             </label>
             <label>Email <span class="optional-label">optional</span>
               <input type="email" name="Email" autocomplete="email" data-clarity-mask="true">
@@ -1496,7 +1590,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <label>Message <span class="optional-label">optional</span>
             <textarea name="Message" placeholder="Tell Ale your child's age, schedule needs, or any questions." data-clarity-mask="true"></textarea>
           </label>
-          <button type="submit" class="btn btn-primary form-submit">Send Inquiry</button>
+          <button type="submit" class="btn btn-primary form-submit">Check Current Openings</button>
+          <p class="form-note">Ale will call or text you about availability and scheduling a tour.</p>
         </form>
         <div class="rates-note">Full-time, part-time, and drop-off care may be available depending on openings and your family's schedule.</div>
         <div class="contact-bottom">
@@ -1531,8 +1626,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </main>
 
 <div class="mobile-contact-bar" aria-label="Quick contact">
-  <a href="tel:12066091653">📞 Call/Text</a>
-  <a href="#contact">📝 Send Inquiry</a>
+  <a href="tel:12066091653" data-conversion-cta="sticky_call">📞 Call Ale</a>
+  <a href="#quick-inquiry" data-conversion-cta="sticky_check_openings">Check Openings</a>
 </div>
 
 <aside class="availability-prompt" id="availabilityPrompt" aria-label="Check childcare availability" hidden>
@@ -1547,8 +1642,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <button class="availability-sheet-close" id="availabilitySheetClose" type="button" aria-label="Close availability form">×</button>
     <span class="eyebrow">Current openings</span>
     <h2 id="availabilitySheetTitle">Tell Ale what care you need</h2>
-    <p class="sheet-intro">Send four quick details. Ale will follow up about availability and a tour.</p>
-    <form class="availability-form" action="https://formsubmit.co/alehomegroup@gmail.com" method="POST">
+    <p class="sheet-intro">Send three quick details. Ale will follow up about availability and a tour.</p>
+    <form class="availability-form" data-form-location="availability_popup" action="https://formsubmit.co/alehomegroup@gmail.com" method="POST">
       <input type="hidden" name="_subject" value="New mobile availability inquiry from Ale's Home Childcare website">
       <input type="hidden" name="_template" value="table">
       <input type="hidden" name="_captcha" value="false">
@@ -1571,13 +1666,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <option>5 years</option>
         </select>
       </label>
-      <label>Care schedule
-        <select name="Desired schedule" required>
-          <option value="">Select schedule</option>
+      <label>Care schedule <span class="optional-label">optional</span>
+        <select name="Desired schedule">
+          <option value="">Not sure yet</option>
           <option>Full-time</option>
           <option>Part-time</option>
           <option>Flexible drop-off</option>
-          <option>Not sure yet</option>
         </select>
       </label>
       <button type="submit" class="btn btn-primary">Send Availability Request</button>
@@ -1653,6 +1747,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   function recentlySawAvailabilityPrompt() {
     try {
+      const confirmedLeadTime = Number(localStorage.getItem('ale-lead-confirmed') || 0);
+      if (confirmedLeadTime && Date.now() - confirmedLeadTime < 180 * 24 * 60 * 60 * 1000) return true;
       const saved = JSON.parse(localStorage.getItem(availabilityPromptKey) || 'null');
       return Boolean(saved && Date.now() - saved.time < availabilityPromptTtl);
     } catch (error) {
@@ -1669,7 +1765,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   function showAvailabilityPrompt() {
     const mobilePointer = window.matchMedia('(max-width: 760px) and (pointer: coarse)').matches;
-    if (!mobilePointer || availabilityPromptShown || recentlySawAvailabilityPrompt() || contactIsVisible()) return;
+    const galleryIsOpen = document.getElementById('lightbox')?.classList.contains('open');
+    if (!mobilePointer || galleryIsOpen || availabilityPromptShown || recentlySawAvailabilityPrompt() || contactIsVisible()) return;
     availabilityPromptShown = true;
     availabilityPrompt.hidden = false;
     rememberAvailabilityPrompt('shown');
@@ -1722,8 +1819,45 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   availabilitySheet.addEventListener('click', (event) => {
     if (event.target === availabilitySheet) closeAvailabilitySheet('dismissed');
   });
-  document.querySelectorAll('a[href="#contact"], a[href^="tel:"]').forEach((link) => {
+  document.querySelectorAll('a[href="#contact"], a[href="#quick-inquiry"], a[href^="tel:"]').forEach((link) => {
     link.addEventListener('click', () => hideAvailabilityPrompt('contact_intent'));
+  });
+
+  // Preserve campaign attribution with every inquiry, including the compact and popup forms.
+  const attributionKeys = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term', 'gclid', 'fbclid'];
+  let savedAttribution = {};
+  try { savedAttribution = JSON.parse(sessionStorage.getItem('ale-attribution') || '{}'); } catch (error) {}
+  attributionKeys.forEach((key) => {
+    const value = campaignParams.get(key);
+    if (value) savedAttribution[key] = value;
+  });
+  try { sessionStorage.setItem('ale-attribution', JSON.stringify(savedAttribution)); } catch (error) {}
+
+  document.querySelectorAll('form[action*="formsubmit.co"]').forEach((form) => {
+    const nextInput = form.querySelector('input[name="_next"]');
+    if (nextInput) nextInput.value = `${window.location.origin}/thank-you.html`;
+    const attribution = {
+      ...savedAttribution,
+      landing_page: `${window.location.pathname}${window.location.search}`,
+      form_location: form.dataset.formLocation || 'unknown'
+    };
+    Object.entries(attribution).forEach(([name, value]) => {
+      if (!value || form.querySelector(`input[name="${name}"]`)) return;
+      const input = document.createElement('input');
+      input.type = 'hidden'; input.name = name; input.value = value;
+      form.appendChild(input);
+    });
+  });
+
+  document.querySelectorAll('[data-conversion-cta]').forEach((link) => {
+    link.addEventListener('click', () => {
+      const ctaName = link.dataset.conversionCta;
+      if (typeof window.clarity === 'function') {
+        window.clarity('set', 'conversion_cta', ctaName);
+        window.clarity('event', 'conversion_cta_click');
+      }
+      if (typeof window.gtag === 'function') window.gtag('event', 'conversion_cta_click', { cta_name: ctaName });
+    });
   });
 
   document.querySelectorAll('.map-details').forEach((details) => {
@@ -1800,28 +1934,36 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     });
   }
 
-  document.querySelectorAll('.contact-form, .availability-form').forEach((form) => {
+  document.querySelectorAll('.contact-form, .availability-form, .quick-inquiry-form').forEach((form) => {
     form.addEventListener('submit', () => {
       rememberAvailabilityPrompt('submitted');
       const referralSource = form.querySelector('select[name="Where did you find us?"]')?.value || 'Not selected';
+      const formLocation = form.dataset.formLocation || 'unknown';
+      try {
+        sessionStorage.setItem('ale-lead-pending', JSON.stringify({ timestamp: Date.now(), formLocation }));
+      } catch (error) {}
       if (typeof window.clarity === 'function') {
-        window.clarity('event', 'contact_form_submit');
+        window.clarity('set', 'form_location', formLocation);
+        window.clarity('event', 'form_submit_attempt');
       }
       if (typeof window.fbq === 'function') {
         window.fbq('track', 'Contact', {
           content_name: 'Contact Form Submit',
           contact_channel: 'form',
-          referral_source: referralSource
+          referral_source: referralSource,
+          form_location: formLocation
         });
         window.fbq('trackCustom', 'ContactFormSubmit', {
           content_name: 'Contact Form Submit',
           contact_channel: 'form',
-          referral_source: referralSource
+          referral_source: referralSource,
+          form_location: formLocation
         });
       }
       if (typeof window.gtag === 'function') {
-        window.gtag('event', 'contact_form_submit', {
-          referral_source: referralSource
+        window.gtag('event', 'form_submit_attempt', {
+          referral_source: referralSource,
+          form_location: formLocation
         });
       }
     });
@@ -1933,11 +2075,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     item.setAttribute('tabindex', '0');
     item.setAttribute('aria-label', `Open photo: ${item.getAttribute('data-cap') || 'daycare space'}`);
     item.addEventListener('click', () => openSpacePreviewItem(item));
-    item.addEventListener('pointerup', (e) => {
-      if (e.pointerType !== 'touch') return;
-      e.preventDefault();
-      openSpacePreviewItem(item);
-    });
     item.addEventListener('keydown', (e) => {
       if (e.key !== 'Enter' && e.key !== ' ') return;
       e.preventDefault();
@@ -1949,11 +2086,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     item.setAttribute('tabindex', '0');
     item.setAttribute('aria-label', `Open photo: ${item.getAttribute('data-cap') || 'daycare photo'}`);
     item.addEventListener('click', () => openGalleryItem(item));
-    item.addEventListener('pointerup', (e) => {
-      if (e.pointerType !== 'touch') return;
-      e.preventDefault();
-      openGalleryItem(item);
-    });
     item.addEventListener('keydown', (e) => {
       if (e.key !== 'Enter' && e.key !== ' ') return;
       e.preventDefault();
@@ -1967,11 +2099,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     item.setAttribute('data-cap', name ? `Handwritten note from ${name}` : 'Handwritten family note');
     item.setAttribute('aria-label', item.getAttribute('data-cap'));
     item.addEventListener('click', () => openTestimonialItem(item));
-    item.addEventListener('pointerup', (e) => {
-      if (e.pointerType !== 'touch') return;
-      e.preventDefault();
-      openTestimonialItem(item);
-    });
     item.addEventListener('keydown', (e) => {
       if (e.key !== 'Enter' && e.key !== ' ') return;
       e.preventDefault();

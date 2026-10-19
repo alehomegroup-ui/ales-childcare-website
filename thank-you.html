@@ -9,7 +9,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 })(window,document,'script','dataLayer','GTM-NN5P5HGV');</script>
 <!-- End Google Tag Manager -->
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, interactive-widget=resizes-content">
+<meta name="theme-color" content="#FFF8EC" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#2B2640" media="(prefers-color-scheme: dark)">
 <title>Thank You | Ale's Home Childcare</title>
 <meta name="robots" content="noindex, follow">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -30,6 +32,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   body{
     margin:0;
     min-height:100vh;
+    min-height:100dvh;
     display:grid;
     place-items:center;
     padding:24px;
@@ -89,6 +92,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     font-family:'Baloo 2',sans-serif;
     font-weight:800;
     text-decoration:none;
+    -webkit-tap-highlight-color:transparent;
+    touch-action:manipulation;
   }
   .primary{background:var(--coral); color:var(--white); box-shadow:0 7px 0 var(--coral-deep);}
   .secondary{background:var(--white); color:var(--grape); border:2px solid rgba(43,38,64,.14);}
@@ -101,6 +106,14 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   gtag('js', new Date());
 
   gtag('config', 'G-2Q5XJXS903');
+</script>
+<!-- Microsoft Clarity -->
+<script type="text/javascript">
+  (function(c,l,a,r,i,t,y){
+    c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+    t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+    y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+  })(window, document, "clarity", "script", "xzfb8quxya");
 </script>
 <!-- Meta Pixel Code -->
 <script>
@@ -115,11 +128,6 @@ s.parentNode.insertBefore(t,s)}(window, document,'script',
 fbq('init', '1544914094036970');
 fbq('init', '1537522611391485');
 fbq('track', 'PageView');
-fbq('track', 'Lead', {
-  content_name: 'Childcare Inquiry Submitted',
-  content_category: 'Contact Form',
-  contact_channel: 'form'
-});
 </script>
 <noscript><img height="1" width="1" style="display:none"
 src="https://www.facebook.com/tr?id=1544914094036970&ev=PageView&noscript=1"
@@ -127,14 +135,6 @@ alt=""><img height="1" width="1" style="display:none"
 src="https://www.facebook.com/tr?id=1537522611391485&ev=PageView&noscript=1"
 alt=""></noscript>
 <!-- End Meta Pixel Code -->
-<script>
-  if (typeof window.gtag === 'function') {
-    window.gtag('event', 'generate_lead', {
-      event_category: 'Contact Form',
-      event_label: 'Childcare Inquiry Submitted'
-    });
-  }
-</script>
 </head>
 <body>
 <!-- Google Tag Manager (noscript) -->
@@ -150,5 +150,48 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <a class="secondary" href="/">Back to Website</a>
   </div>
 </main>
-<script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a4cbb5f6cf07ed3b',t:'MTc5MjM3MDIxMA=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+<script>
+  (function confirmLeadFromRecentSubmission() {
+    let pendingLead = null;
+    try {
+      pendingLead = JSON.parse(sessionStorage.getItem('ale-lead-pending') || 'null');
+    } catch (error) {}
+
+    const submittedRecently = pendingLead &&
+      Number.isFinite(pendingLead.timestamp) &&
+      Date.now() - pendingLead.timestamp < 10 * 60 * 1000;
+
+    if (!submittedRecently) return;
+
+    const formLocation = pendingLead.formLocation || 'unknown';
+
+    if (typeof window.clarity === 'function') {
+      window.clarity('set', 'form_location', formLocation);
+      window.clarity('event', 'lead_confirmed');
+    }
+
+    if (typeof window.gtag === 'function') {
+      window.gtag('event', 'generate_lead', {
+        event_category: 'Contact Form',
+        event_label: 'Childcare Inquiry Submitted',
+        form_location: formLocation
+      });
+    }
+
+    if (typeof window.fbq === 'function') {
+      window.fbq('track', 'Lead', {
+        content_name: 'Childcare Inquiry Submitted',
+        content_category: 'Contact Form',
+        contact_channel: 'form',
+        form_location: formLocation
+      });
+    }
+
+    try {
+      localStorage.setItem('ale-lead-confirmed', String(Date.now()));
+      sessionStorage.removeItem('ale-lead-pending');
+    } catch (error) {}
+  })();
+</script>
+</body>
 </html>
